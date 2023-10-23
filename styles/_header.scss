@@ -1,8 +1,11 @@
 nav {
-  height: 7rem;
+  height: 15vh;
   width: 100vw;
+  @include background_ducks;
   color: navajowhite;
   display: flex;
+  align-items: center;
+  justify-content: space-between;
   position: sticky;
   span {
     width: 100vw;
@@ -10,6 +13,7 @@ nav {
     align-items: center;
 
     .nav-left {
+      width: 20vw;
       margin-inline-start: 1rem;
       @include flex-row($justify: space-between);
       #logo {
@@ -18,6 +22,10 @@ nav {
       }
       .searchbar {
         @include flex-column($align: center);
+        #search-text {
+          height: 1.75rem;
+          align-items: center;
+        }
       }
     }
 

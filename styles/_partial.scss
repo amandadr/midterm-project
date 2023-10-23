@@ -1,6 +1,5 @@
 // variables
-$font-family_SS3: 'Source Sans 3', sans-serif;
-$font-family_Bungee: 'Bungee', sans-serif;
+$font-family_main: 'Roboto', sans-serif;
 
 $color_primary: #545149;
 $color_secondary: #f6f3e9;
@@ -35,9 +34,9 @@ $border: .2rem solid $color_border;
   justify-content: $justify;
 }
 
-@mixin background_birds() {
+@mixin background_ducks() {
     background-color: $background_yellow;
-    background-image: url("https://www.transparenttextures.com/patterns/foggy-birds.png");
+    background-image: url("https://as2.ftcdn.net/v2/jpg/01/82/36/07/1000_F_182360731_G3TcNELsQsYFd9hHpyereuRyRfron70t.jpg");
 }
 
 @mixin background_tweeter() {
