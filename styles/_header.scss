@@ -1,0 +1,42 @@
+nav {
+  height: 7rem;
+  width: 100vw;
+  color: navajowhite;
+  display: flex;
+  position: sticky;
+  span {
+    width: 100vw;
+    @include flex-row($justify: space-between);
+    align-items: center;
+
+    .nav-left {
+      margin-inline-start: 1rem;
+      @include flex-row($justify: space-between);
+      #logo {
+        height: 2rem;
+        width: 2rem;
+      }
+      .searchbar {
+        @include flex-column($align: center);
+      }
+    }
+
+    #new-quack-btn {
+      height: 3rem;
+      width: 4rem;
+    }
+
+    .nav-right {
+      margin-inline-start: 6rem;
+      margin-inline-end: 1rem;
+      font-size: 1rem;
+      @include flex-column($align: flex-end);
+      justify-content: space-evenly;
+      .login,
+      .register {
+        height: 1.5rem;
+        @include flex-row($justify: space-evenly);
+      }
+    }
+  }
+}
