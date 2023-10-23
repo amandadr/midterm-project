@@ -12,6 +12,10 @@
   "author": "Lighthouse Labs",
   "license": "ISC",
   "dependencies": {
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@fontsource/roboto": "^5.0.8",
+    "@mui/material": "^5.14.14",
     "chalk": "^2.4.2",
     "dotenv": "^2.0.0",
     "ejs": "^2.6.2",
@@ -22,5 +26,9 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.10"
+  },
+  "peerDependencies": {
+    "react": "^17.0.0 || ^18.0.0",
+    "react-dom": "^17.0.0 || ^18.0.0"
   }
 }
