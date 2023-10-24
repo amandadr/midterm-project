@@ -1,19 +1,132 @@
 @import './partial';
 
-.pfp-main {
-  @include flex-row($justify: normal);
+.pp-main {
+  height: 85vh;
+  width: 100%;
+  @include flex-row($justify: space-between);
 
-  .pfp-left {
+  .pp-left {
+    border: $border;
+    height: 100%;
     width: 40%;
+    @include flex-column($align: flex-start);
 
-    
+    .pp-user-info {
+      height: 30%;
+      @include flex-row($justify: flex-start);
+      align-items: center;
+
+      .pp-user-pfp {
+        margin: 1rem;
+        height: 8rem;
+        width: 8rem;
+      }
+
+      .pp-user-info-text {
+        height: 100%;
+        padding-block-end: .5rem;
+        @include flex-column($align: flex-start);
+        justify-content: flex-end;
+
+        .pp-user-display {
+          font-size: xx-large;
+          @include emphasize();
+        }
+
+        .pp-user-pronouns {
+          font-size: small;
+          padding-bottom: .5rem;
+        }
+
+        .pp-user-name {
+          font-size: large;
+        }
+      }
+    }
+
+    .pp-user-bio {
+      height: 20%;
+      margin: 1rem;
+      @include flex-column($align: flex-start);
+
+      .pp-bio-head {
+        width: 5rem;
+        font-size: large;
+        @include emphasize();
+        border-bottom: .2rem solid $color_secondary;
+      }
+
+      .pp-bio-text {
+        font-size: small;
+      }
+    }
+
+    .create-quack {
+      height: 40%;
+      width: 80%;
+      margin-inline-start: 1rem;
+      @include flex-column($align: flex-start);
+      justify-content: space-between;
+
+      .cq-head {
+        font-size: large;
+        @include emphasize;
+        border-bottom: .2rem solid $color_secondary;
+      }
+
+      .cq-top {
+        width: 100%;
+        font-size: medium;
+        @include flex-row($justify: space-between);
+
+        .cq-category {
+          width: 45%;
+          @include flex-row($justify: space-between);
+        }
+      }
+
+      .cq-middle {
+        width: 100%;
+        font-size: medium;
+        @include flex-row($justify: space-between);;
+
+        .cq-title {
+          width: 53%;
+        }
+
+        .cq-url {
+          width: 43%;
+          font-size: small;
+        }
+
+      }
+
+      .cq-bottom {
+        height: 40%;
+        width: 100%;
+        display: flex;
+        align-items: flex-end;
+        font-size: medium;
+
+        .cq-description {
+          height: 90%;
+          width: 70%;
+          font-size: small;
+          margin-right: .5rem;
+        }
+
+        .cq-btn {
+          height: 50%;
+        }
+      }
+    }
   }
 
-  .pfp-right {
+  .pp-right {
     width: 60%;
 
     .resource {
-      width: 100%;
+      width: 20%;
 
       .resource-user-info {
         display: none;
