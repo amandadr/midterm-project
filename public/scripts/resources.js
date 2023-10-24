@@ -1,39 +1,50 @@
-const {
-  getResourcePoster,
-  getResourceLikes,
-  getResourceRating,
-} = require("../../db/queries/resources");
-
 const createResourceElement = function (resourcesObject) {
-  let $resource = $(`
-  <div class="resource">
-    <img id="resource-image" src="${resourcesObject.img_url}"></img>
-    <section class="resource-info">
-      <h2>${resourcesObject.title}</h2>
-      <h4>${resourcesObject.url}</h4>
-      <h3>${getResourcePoster(resourcesObject.user_id)}</h3>
-      <p>${resourcesObject.description}</p>
-      <section>
-        <label for="rating">Rating: ${getResourceRating(
-          resourceObject.id
-        )}</label>
-        <label for="likes">Likes: ${getResourceLikes(
-          resourcesObject.id
-        )}</label>
-      </section>
-    </section>
-  </div>`);
+  return Promise.all([
+    getResourcePoster(resourcesObject.user_id),
+    getResourceRating(resourcesObject.id),
+    getResourceLikes(resourcesObject.id),
+  ])
+    .then(([name, rating, likes]) => {
+      let $resource = $(`
+        <div class="resource">
+          <img id="resource-image" src="${resourcesObject.img_url}"></img>
+          <section class="resource-info">
+            <h2>${resourcesObject.title}</h2>
+            <h4>${resourcesObject.url}</h4>
+            <h3>${name}</h3>
+            <p>${resourcesObject.description}</p>
+            <section>
+              <label for="rating">Rating: ${rating}</label>
+              <label for="likes">Likes: ${likes}</label>
+            </section>
+          </section>
+        </div>
+      `);
 
-  return $resource;
+      return $resource;
+    })
+    .catch((error) => {
+      console.error(error);
+      return null;
+    });
 };
 
 const renderResources = function (resourcesArray) {
   const $resourcesContainer = $("#resources-container");
   $resourcesContainer.empty();
-  for (const resource of resourcesArray) {
-    const $resource = createResourceElement(resource);
-    $resourcesContainer.append($resource);
-  }
+
+  const resourcePromises = resourcesArray.map((resource) =>
+    createResourceElement(resource)
+  );
+
+  Promise.all(resourcePromises)
+    .then(($resources) => {
+      $resourcesContainer.append($resources);
+    })
+    .catch((error) => {
+      console.error(error);
+      // Handle the error as needed
+    });
 };
 
 $(() => {
@@ -50,7 +61,7 @@ $(() => {
   const loadResources = function () {
     $.get("/api/resources")
       .done((resources) => {
-        renderResources(resources);
+        renderResources(resources.resources);
       })
       .fail((error) => {
         console.log(error);
@@ -59,5 +70,3 @@ $(() => {
 
   loadResources();
 });
-
-module.exports = { resources };
