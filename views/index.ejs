@@ -4,27 +4,36 @@
 <head>
   <title>Home Page</title>
   <%- include('./partials/head'); %>
+    <!-- House Sheets -->
+    <link rel="stylesheet" href="/styles/resource.css" />
 </head>
 
 <body>
   <%- include('./partials/header'); %>
-  <h1>Have fun! 🥔</h1>
+    <div class="resource">
+      <img class="resource-img"
+        src="https://i.etsystatic.com/34711428/r/il/9c16cb/4756246624/il_fullxfull.4756246624_88x2.jpg"></img>
+      <section class="resource-info">
+        <div class="resource-title">Resource Title</div>
+        <div class="resource-url"> { URL } display for now, anchor to title later</div>
 
-  <div class="resource">
-    <img id="resource-img" src="https://i.etsystatic.com/34711428/r/il/9c16cb/4756246624/il_fullxfull.4756246624_88x2.jpg"></img>
-    <section class="resource-info">
-      <h2>Resource Title</h2>
-      <h4> { URL }</h4>
-      <h3>@duqname</h3>
-      <textarea id="resource-desc">
-        Description
-      </textarea>
-      <section class="resource-info" id="r-i-footer">
-        <label for="rating">Rating</label>
-        <label for="likes">Likes</label>
+        <section class="resource-user-info">
+          <img class="resource-user-pfp"
+            src="https://t3.ftcdn.net/jpg/01/06/13/54/360_F_106135410_hai531zdSrXxSDDuXvtbLtpslpDgb1d9.jpg">
+          <div class="resource-user-name">@duqname</div>
+        </section>
+
+        <p class="resource-description">
+          The man said "No, we just sell lemonade
+          But it’s cold and it's fresh, and it’s all home-made...
+        </p>
+
+        <section class="r-i-footer">
+          <div class="resource-rating">Rating</div>
+          <div class="likes">Likes</div>
+        </section>
       </section>
-    </section>
-  </div>
+    </div>
 </body>
 
 </html>

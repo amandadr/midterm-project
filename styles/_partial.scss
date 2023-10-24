@@ -18,7 +18,7 @@ $border: .2rem solid $color_border;
 
 // @include
 @mixin emphasize() {
-  font-family: $font-family_SS3;
+  font-family: $font-family_main;
   font-weight: 600;
 }
 

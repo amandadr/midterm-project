@@ -1,3 +1,4 @@
+@import './partial';
 nav {
   height: 15vh;
   width: 100vw;
@@ -17,8 +18,8 @@ nav {
       margin-inline-start: 1rem;
       @include flex-row($justify: space-between);
       #logo {
-        height: 2rem;
-        width: 2rem;
+        height: 3rem;
+        width: 3rem;
       }
       .searchbar {
         @include flex-column($align: center);
