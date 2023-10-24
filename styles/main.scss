@@ -1,7 +1,15 @@
+@import './partial';
+@import './header';
+
+* {
+	box-sizing: inherit;
+	font-family: $font-family_main;
+}
+
 body {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   min-height: 100vh;
 

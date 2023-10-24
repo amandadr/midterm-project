@@ -3,54 +3,37 @@
 
 <head>
   <title>Home Page</title>
-
-  <meta charset="UTF-8" >
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" >
-
-  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" />
-  <link rel="stylesheet" href="/vendor/border-box.css" />
-  <link rel="stylesheet" href="/styles/main.css" />
-  <link rel="stylesheet" href="/styles/layout.css" />
-
-  <script src="/vendor/jquery-3.0.0.js"></script>
-  <script defer src="/scripts/app.js"></script>
+  <%- include('./partials/head'); %>
+    <!-- House Sheets -->
+    <link rel="stylesheet" href="/styles/resource.css" />
 </head>
 
 <body>
-  <%- include('partials/_navbar') %>
-  <h1>Have fun! 🥔</h1>
-  <form class="form-center" action="/users/" method="POST">
-    <div class="form-group mb-2">
-      <label for="name">Username:</label>
-      <input 
-        class="form-center" 
-        type="text" 
-        name="name" 
-        placeholder="Username"
-        style="width: 300px; margin: 1em"
-      />
+  <%- include('./partials/header'); %>
+    <div class="resource">
+      <img class="resource-img"
+        src="https://i.etsystatic.com/34711428/r/il/9c16cb/4756246624/il_fullxfull.4756246624_88x2.jpg"></img>
+      <section class="resource-info">
+        <div class="resource-title">Resource Title</div>
+        <div class="resource-url"> { URL } display for now, anchor to title later</div>
 
-      <label for="email">Email:</label>
-      <input 
-        class="form-center" 
-        type="email" 
-        name="email" 
-        placeholder="username"
-        style="width: 300px; margin: 1em" 
-      />
+        <section class="resource-user-info">
+          <img class="resource-user-pfp"
+            src="https://t3.ftcdn.net/jpg/01/06/13/54/360_F_106135410_hai531zdSrXxSDDuXvtbLtpslpDgb1d9.jpg">
+          <div class="resource-user-name">@duqname</div>
+        </section>
 
-      <label for="password">Password:</label>
-      <input 
-        class="form-center" 
-        type="password" 
-        name="password" 
-        placeholder="password"
-        style="width: 300px; margin: 1em" 
-      />
-      <button type="submit" class="btn btn-primary">Register</button>
+        <p class="resource-description">
+          The man said "No, we just sell lemonade
+          But it’s cold and it's fresh, and it’s all home-made...
+        </p>
+
+        <section class="r-i-footer">
+          <div class="resource-rating">Rating</div>
+          <div class="likes">Likes</div>
+        </section>
+      </section>
     </div>
-  </form>
 </body>
 
 </html>

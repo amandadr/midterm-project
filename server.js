@@ -48,6 +48,11 @@ app.get('/', (req, res) => {
   res.render('index');
 });
 
+// TEMP NAVBAR WORKAREA ///
+app.get("/navbar", (req, res) => {
+  res.render("navbar");
+});
+
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
 });

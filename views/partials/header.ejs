@@ -1,0 +1,37 @@
+<nav>
+  <span class="nav">
+    <div class="nav-left">
+    <img id="logo" src="https://i.etsystatic.com/34711428/r/il/9c16cb/4756246624/il_fullxfull.4756246624_88x2.jpg"></img>
+
+    <form class="searchbar" , id="search-form", action="/search:searchInput" , method="POST">
+      <textarea id="search-text" placeholder="Looking for a Quack?"></textarea>
+      <button class="searchbar" , id="search-btn" , type="submit">
+          Search
+        </button>
+    </form>
+    </div>
+
+    <button class="logged" , id="new-quack-btn" , type="submit">
+      New Quack
+    </button>
+
+    <div class="nav-right">
+      <form class="unlogged login" , id="login-form" , action="/login" , method="POST">
+        <input id="login-user" , type="text" , placeholder="@duqname/email"></input>
+        <input id="login-password" , type="password" , placeholder="password"></input>
+        <button class="unlogged login" , id="login-btn" , type="submit">
+          Login
+        </button>
+      </form>
+
+      <form class="unlogged register" , id="register-form" , action="/register" , method="POST">
+        <input id="register-user" , type="text" , placeholder="@duqname"></input>
+        <input id="register-email" , type="email" , placeholder="email address"></input>
+        <input id="register-password" , type="password" , placeholder="password"></input>
+        <button class="unlogged register" , id="register-btn" , type="submit">
+          Register
+        </button>
+      </form>
+    </div>
+  </span>
+</nav>
