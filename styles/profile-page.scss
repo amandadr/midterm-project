@@ -6,7 +6,6 @@
   @include flex-row($justify: space-between);
 
   .pp-left {
-    border: $border;
     height: 100%;
     width: 40%;
     @include flex-column($align: flex-start);
@@ -88,7 +87,8 @@
       .cq-middle {
         width: 100%;
         font-size: medium;
-        @include flex-row($justify: space-between);;
+        @include flex-row($justify: space-between);
+        ;
 
         .cq-title {
           width: 53%;
@@ -124,16 +124,35 @@
 
   .pp-right {
     width: 60%;
+    padding: 1rem;
 
-    .resource {
-      width: 20%;
+    .pp-right-top {
+      padding-block: .5rem;
+      @include flex-row($justify: space-between);
+      border-bottom: .2rem solid $color_secondary;
 
-      .resource-user-info {
-        display: none;
+      .pp-right-head {
+        font-size: x-large;
+        @include emphasize();
       }
+    }
 
-      .resource-description {
-        display: none;
+    .pp-right-bottom {
+      padding-inline: .5rem;
+      .resource {
+        width: 20%;
+
+        .resource-url {
+          display: none;
+        }
+
+        .resource-user-info {
+          display: none;
+        }
+
+        .resource-description {
+          display: none;
+        }
       }
     }
   }
