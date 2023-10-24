@@ -5,6 +5,8 @@
 
   .pfp-left {
     width: 40%;
+
+    
   }
 
   .pfp-right {
@@ -12,6 +14,10 @@
 
     .resource {
       width: 100%;
+
+      .resource-user-info {
+        display: none;
+      }
 
       .resource-description {
         display: none;
