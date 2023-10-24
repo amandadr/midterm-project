@@ -48,9 +48,9 @@ app.get('/', (req, res) => {
   res.render('index');
 });
 
-// TEMP NAVBAR WORKAREA ///
-app.get("/navbar", (req, res) => {
-  res.render("navbar");
+// TEMP PFP WORKAREA ///
+app.get("/userpfp", (req, res) => {
+  res.render("profile-page");
 });
 
 app.listen(PORT, () => {

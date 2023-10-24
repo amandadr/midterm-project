@@ -19,7 +19,7 @@ $border: .2rem solid $color_border;
 // @include
 @mixin emphasize() {
   font-family: $font-family_main;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 @mixin flex-column($align: center) {

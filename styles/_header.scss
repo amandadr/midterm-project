@@ -25,6 +25,7 @@ nav {
         @include flex-column($align: center);
         #search-text {
           height: 1.75rem;
+          width: fit-content;
           align-items: center;
         }
       }
