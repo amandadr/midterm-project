@@ -1,0 +1,21 @@
+@import './partial';
+
+.pfp-main {
+  @include flex-row($justify: normal);
+
+  .pfp-left {
+    width: 40%;
+  }
+
+  .pfp-right {
+    width: 60%;
+
+    .resource {
+      width: 100%;
+
+      .resource-description {
+        display: none;
+      }
+    }
+  }
+}
