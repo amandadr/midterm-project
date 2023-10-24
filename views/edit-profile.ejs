@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Home Page</title>
+  <%- include('./partials/head'); %>
+    <!-- House Sheets -->
+    <link rel="stylesheet" href="/styles/resource.css" />
+    <link rel="stylesheet" href="/styles/edit-profile.css" />
+</head>
+
+<body>
+  <%- include('./partials/header'); %>
+    <section class="ep-top">
+      <section class="ep-img">
+        <img class="ep-pfp"
+          src="https://t3.ftcdn.net/jpg/01/06/13/54/360_F_106135410_hai531zdSrXxSDDuXvtbLtpslpDgb1d9.jpg">
+        <button class="ep-img-btn">Edit pfp</button>
+      </section>
+
+
+      <section class="ep-img-aside">
+        <section class="ep-display">
+          <div class="ep-display-text">Devvy Duq</div>
+          <input class="ep-edit-display" placeholder="Edit Name"></input>
+          <button class="ep-display-btn">Edit Name</button>
+        </section>
+
+        <section class="ep-pronouns">
+          <div class="ep-pronouns-text">quack/honk</div>
+          <input class="ep-edit-pronouns" placeholder="Edit Pronouns"></input>
+          <button class="ep-pronouns-btn">Edit Pronouns</button>
+        </section>
+
+        <div class="ep-user-name">@duqname</div>
+      </section>
+    </section>
+
+    <section class="ep-bottom">
+      <section class="ep-bio">
+        <div class="ep-bio-head">
+          About Me
+        </div>
+
+        <textarea class="ep-bio-text">
+          Ducks are a group of species of water birds – relatively small in size and with shorter necks than their
+          close cousins of swans and geese. Along with their longer necked cousins, they make up the biological family
+          of Anatidae.
+        </textarea>
+
+        <button class="ep-bio-btn">Edit Bio</button>
+      </section>
+
+      <section class="ep-password">
+        <input class="ep-edit-password" placeholder="Change Password"></input>
+        <button class="ep-password-btn">Change Password</button>
+      </section>
+
+    </section>
+
+</body>
+
+</html>

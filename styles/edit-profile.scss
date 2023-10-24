@@ -1,0 +1,25 @@
+@import './partial';
+
+//IN PROGRESS: formatting top
+.ep-top {
+  border: $border;
+  height: 45%;
+  @include flex-row($justify: center);
+  align-items: flex-end;
+
+  .ep-img {
+    @include flex-column($align: center);
+
+    .ep-pfp {
+      height: 10rem;
+      width: 10rem;
+      margin: .5rem;
+    }
+  }
+
+  .ep-img-aside {
+    border: $border;
+    height: 100%;
+    @include flex-column($align: flex-start);
+  }
+}

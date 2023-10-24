@@ -49,8 +49,13 @@ app.get('/', (req, res) => {
 });
 
 // TEMP PFP WORKAREA ///
-app.get("/userpfp", (req, res) => {
+app.get("/userpf", (req, res) => {
   res.render("profile-page");
+});
+
+// TEMP EDIT PF WORKAREA ///
+app.get("/editpf", (req, res) => {
+  res.render("edit-profile");
 });
 
 app.listen(PORT, () => {
