@@ -8,3 +8,16 @@
   font-size: larger;
   @include emphasize();
 }
+
+.row {
+  display: block;
+  .col-lg-4 {
+    @include flex-row($justify: space-between);
+  }
+}
+
+.resource {
+  width: 15rem;
+  margin: 1rem;
+  padding: .2rem;
+}

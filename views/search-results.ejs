@@ -11,8 +11,28 @@
 
 <body>
   <%- include('./partials/header'); %>
-  <div class="sr-head">Your Results: (turn into: 'results for ${search input}')</div>
-  <%- include('./partials/resource'); %>
+    <div class="sr-head">Your Results: (turn into: 'results for ${search input}')</div>
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="box"><%- include('./partials/resource'); %></div>
+        <div class="box"><%- include('./partials/resource'); %></div>
+        <div class="box"><%- include('./partials/resource'); %></div>
+        <div class="box"><%- include('./partials/resource'); %></div>
+      </div>
+      <div class="col-lg-4">
+        <div class="box"><%- include('./partials/resource'); %></div>
+        <div class="box"><%- include('./partials/resource'); %></div>
+        <div class="box"><%- include('./partials/resource'); %></div>
+        <div class="box"><%- include('./partials/resource'); %></div>
+      </div>
+      <div class="col-lg-4">
+        <div class="box"><%- include('./partials/resource'); %></div>
+        <div class="box"><%- include('./partials/resource'); %></div>
+        <div class="box"><%- include('./partials/resource'); %></div>
+        <div class="box"><%- include('./partials/resource'); %></div>
+      </div>
+    </div>
+
 </body>
 
 </html>
