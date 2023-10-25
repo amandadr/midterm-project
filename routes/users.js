@@ -25,7 +25,10 @@ router.post("/", (req, res) => {
 
       res.redirect("/");
     })
-    .catch((e) => res.send(e));
+    .catch((e) => {
+      console.log(err.message);
+      res.send(e)
+    });
 });
 
 router.post("/login", (req, res) => {

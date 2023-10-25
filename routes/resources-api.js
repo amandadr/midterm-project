@@ -3,6 +3,7 @@ const router = express.Router();
 const resourceQueries = require("../db/queries/resources");
 
 router.get("/", (req, res) => {
+  console.log("API resources")
   resourceQueries
     .getResources()
     .then((resources) => {
@@ -10,6 +11,7 @@ router.get("/", (req, res) => {
     })
     .catch((err) => {
       res.status(500).json({ error: err.message });
+      console.log(err.message);
     });
 });
 
@@ -21,6 +23,7 @@ router.get("/likes", (req, res) => {
     })
     .catch((err) => {
       res.status(500).json({ error: err.message });
+      console.log(err.message);
     });
 });
 
@@ -33,6 +36,7 @@ router.get("/poster/:id", (req, res) => {
     })
     .catch((err) => {
       res.status(500).json({ error: err.message });
+      console.log(err.message);
     });
 });
 
@@ -44,6 +48,7 @@ router.get("/rating", (req, res) => {
     })
     .catch((err) => {
       res.status(500).json({ error: err.message });
+      console.log(err.message);
     });
 });
 
@@ -57,6 +62,7 @@ router.post("/", (req, res) => {
     })
     .catch((err) => {
       res.status(500).json({ error: err.message });
+      console.log(err.message);
     });
 });
 
