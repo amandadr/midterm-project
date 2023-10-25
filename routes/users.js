@@ -10,7 +10,11 @@ const users = require("../db/queries/users");
 const router = express.Router();
 
 router.get("/", (req, res) => {
-  res.render("users");
+  const user = req.session.userID;
+  const templateVars = {
+    user
+  };
+  res.render("users", templateVars);
 });
 
 router.post("/", (req, res) => {
