@@ -43,6 +43,12 @@ const getLikedResources = (userId) => {
     .then((data) => data.rows);
 };
 
+const getResourcesByUser = (userId) => {
+  return db
+    .query(`SELECT * FROM resources WHERE user_id = $1;`, [userId])
+    .then((data) => data.rows);
+};
+
 module.exports = {
   getResources,
   getResourcePoster,
@@ -50,4 +56,5 @@ module.exports = {
   getResourceRating,
   addResource,
   getLikedResources,
+  getResourcesByUser,
 };
