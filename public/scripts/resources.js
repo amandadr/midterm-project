@@ -48,14 +48,16 @@ const renderResources = function (resourcesArray) {
 };
 
 $(() => {
-  $("#resources").on("click", function (event) {
+  $("#resources").on("submit", function (event) {
     event.preventDefault();
-    const formData = this.serialize();
-    $.ajax({
-      method: "POST",
-      url: "/api/resources",
-      data: formData,
-    });
+    const formData = $(this).serialize();
+    submitResource(formData)
+      .then(() => {
+        console.log("success");
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   });
 
   const loadResources = function () {

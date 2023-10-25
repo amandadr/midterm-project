@@ -53,14 +53,24 @@ function getResourceLikes() {
     });
 }
 
+const submitResource = function (data) {
+  return $.ajax({
+    method: "POST",
+    url: "/api/resources",
+    data,
+  });
+};
+
 $(() => {
-  $("#resources").on("click", function (event) {
+  $("#login").submit(function (event) {
     event.preventDefault();
-    const formData = this.serialize();
-    $.ajax({
-      method: "POST",
-      url: "/api/resources",
-      data: formData,
-    });
+    const formData = $(this).serialize();
+    $.post("/users/login", formData)
+      .done(function (response) {
+        console.log(response);
+      })
+      .fail(function (error) {
+        console.error(error);
+      });
   });
 });

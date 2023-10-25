@@ -47,4 +47,18 @@ router.get("/rating", (req, res) => {
     });
 });
 
+router.post("/", (req, res) => {
+  const { title, description, url, img_url } = req.body;
+  console.log(req.body);
+  const user_id = 1;
+  resourceQueries
+    .addResource(title, description, url, user_id, img_url)
+    .then((resource) => {
+      res.json({ resource });
+    })
+    .catch((err) => {
+      res.status(500).json({ error: err.message });
+    });
+});
+
 module.exports = router;

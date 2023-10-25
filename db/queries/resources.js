@@ -26,9 +26,18 @@ const getResourceRating = (resourceId) => {
     .then((data) => data.rows[0].avg);
 };
 
+const addResource = (title, description, url, user_id, img_url) => {
+  const query = {
+    text: "INSERT INTO resources(title, description, url, user_id, img_url) VALUES($1, $2, $3, $4, $5) RETURNING *",
+    values: [title, description, url, user_id, img_url],
+  };
+  return db.query(query).then((res) => res.rows[0]);
+};
+
 module.exports = {
   getResources,
   getResourcePoster,
   getResourceLikes,
   getResourceRating,
+  addResource,
 };
