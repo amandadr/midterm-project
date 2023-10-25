@@ -1,0 +1,104 @@
+@import './partial';
+
+.ep-top,
+.ep-bottom {
+  width: 60%;
+  margin: .5rem;
+  padding: .5rem;
+}
+
+.ep-top {
+  border-bottom: .2rem solid $color_secondary;
+  height: 45%;
+  @include flex-row($justify: flex-start);
+  align-items: center;
+
+  .ep-img {
+    width: 50%;
+    @include flex-column($align: center);
+    justify-content: space-between;
+
+    .ep-pfp {
+      height: 10rem;
+      width: 10rem;
+      margin: .5rem;
+    }
+  }
+
+  .ep-img-aside {
+    height: 9rem;
+    @include flex-column($align: flex-start);
+    justify-content: space-between;
+  }
+}
+
+.ep-bottom {
+  @include flex-column($align: center);
+  justify-content: space-between;
+
+  .ep-bio {
+    height: min-content;
+    width: 90%;
+    padding: .5rem;
+
+    .ep-bio-head {
+      border-bottom: .2rem solid $color_secondary;
+      width: 100%;
+      @include flex-row($justify: space-between);
+      margin-bottom: .5rem;
+      font-size: large;
+      @include emphasize();
+
+      .ep-bio-btn {
+        width: 10%;
+        margin-left: .5rem;
+        margin-bottom: .3rem;
+        font-size: small;
+      }
+    }
+
+    .ep-bio-text {
+      border: none;
+      height: 5rem;
+      width: 100%;
+      display: flex;
+      align-items: flex-start;
+      background: transparent;
+      outline: none;
+      resize: none;
+      overflow: hidden;
+    }
+  }
+
+  .ep-password {
+    height: auto;
+    width: 60%;
+    @include flex-column($align: flex-start);
+
+    .ep-password-head {
+      border-bottom: .2rem solid $color_secondary;
+      margin-bottom: 1rem;
+      padding-bottom: .5rem;
+      font-size: large;
+      @include emphasize();
+
+      .ep-bio-btn {
+        font-weight: 300;
+      }
+    }
+
+    .ep-password-bottom {
+      height: 2rem;
+      width: 65%;
+      @include flex-row($justify: space-between);
+
+      .ep-edit-password {
+        width: 75%;
+      }
+
+      .ep-password-btn {
+        font-size: small;
+      }
+    }
+  }
+}
