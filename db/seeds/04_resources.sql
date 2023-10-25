@@ -1,2 +1,2 @@
-INSERT INTO resources (title, description, url, category_id, user_id) VALUES ('test', 'test', 'https://www.google.com', 1, 1);
-INSERT INTO resources (title, description, url, category_id, user_id) VALUES ('test2', 'test2', 'https://www.youtube.com', 1, 2);
+INSERT INTO resources (title, description, url, category, user_id) VALUES ('test', 'test', 'https://www.google.com', 'test', 1);
+INSERT INTO resources (title, description, url, category, user_id) VALUES ('test2', 'test2', 'https://www.youtube.com', 'test', 2);

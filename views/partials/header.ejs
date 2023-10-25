@@ -17,17 +17,17 @@
 
     <div class="nav-right">
       <form class="unlogged login" , id="login-form" , action="/login" , method="POST">
-        <input id="login-user" , type="text" , placeholder="@duqname/email"></input>
-        <input id="login-password" , type="password" , placeholder="password"></input>
+        <input id="login-user" , type="text" , placeholder="@duqname/email" name="email"></input>
+        <input id="login-password" , type="password" , placeholder="password" name="password"></input>
         <button class="unlogged login" , id="login-btn" , type="submit">
           Login
         </button>
       </form>
 
-      <form class="unlogged register" , id="register-form" , action="/register" , method="POST">
-        <input id="register-user" , type="text" , placeholder="@duqname"></input>
-        <input id="register-email" , type="email" , placeholder="email address"></input>
-        <input id="register-password" , type="password" , placeholder="password"></input>
+      <form class="unlogged register" , id="register-form" , action="/users/" , method="POST">
+        <input id="register-user" , type="text" , placeholder="@duqname" name="name"></input>
+        <input id="register-email" , type="email" , placeholder="email address" name="email"></input>
+        <input id="register-password" , type="password" , placeholder="password" name="password"></input>
         <button class="unlogged register" , id="register-btn" , type="submit">
           Register
         </button>

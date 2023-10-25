@@ -6,9 +6,9 @@ CREATE TABLE resources (
   user_id INTEGER REFERENCES users(id) NOT NULL,
   title VARCHAR(255) NOT NULL,
   description VARCHAR(255),
-  url VARCHAR(255) NOT NULL,
-  img_url VARCHAR(255),
-  category_id INTEGER REFERENCES categories(id) NOT NULL,
+  url TEXT NOT NULL,
+  img_url TEXT,
+  category TEXT,
   created_at TIMESTAMP NOT NULL DEFAULT NOW(),
   updated_at TIMESTAMP NOT NULL DEFAULT NOW()
 );

@@ -1,1 +1,1 @@
-INSERT INTO categories (name) VALUES ('test');
+-- INSERT INTO categories (name) VALUES ('test');

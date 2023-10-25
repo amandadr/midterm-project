@@ -23,7 +23,7 @@ router.post("/", (req, res) => {
         return res.send({ error: "error" });
       }
 
-      req.session.userId = user.id;
+      res.redirect("/");
     })
     .catch((e) => res.send(e));
 });
@@ -38,7 +38,6 @@ router.post("/login", (req, res) => {
       return res.send({ error: "invalid password" });
     }
 
-    console.log(user.id);
     req.session.userId = user.id;
     res.send({
       user: {
