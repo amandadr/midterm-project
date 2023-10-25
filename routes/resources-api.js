@@ -3,7 +3,7 @@ const router = express.Router();
 const resourceQueries = require("../db/queries/resources");
 
 router.get("/", (req, res) => {
-  console.log("API resources")
+  console.log("API resources");
   resourceQueries
     .getResources()
     .then((resources) => {
@@ -15,9 +15,10 @@ router.get("/", (req, res) => {
     });
 });
 
-router.get("/likes", (req, res) => {
+router.get("/likes/:id", (req, res) => {
+  const id = req.params.id;
   resourceQueries
-    .getResourceLikes()
+    .getResourceLikes(id)
     .then((likes) => {
       res.json({ likes });
     })
@@ -40,9 +41,10 @@ router.get("/poster/:id", (req, res) => {
     });
 });
 
-router.get("/rating", (req, res) => {
+router.get("/rating/:id", (req, res) => {
+  const id = req.params.id;
   resourceQueries
-    .getResourceRating()
+    .getResourceRating(id)
     .then((rating) => {
       res.json({ rating });
     })

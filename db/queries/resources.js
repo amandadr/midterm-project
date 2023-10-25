@@ -34,10 +34,20 @@ const addResource = (title, description, url, user_id, img_url) => {
   return db.query(query).then((res) => res.rows[0]);
 };
 
+const getLikedResources = (userId) => {
+  return db
+    .query(
+      `SELECT resources.* FROM resources JOIN likes ON resources.id = likes.resource_id WHERE likes.user_id = $1;`,
+      [userId]
+    )
+    .then((data) => data.rows);
+};
+
 module.exports = {
   getResources,
   getResourcePoster,
   getResourceLikes,
   getResourceRating,
   addResource,
+  getLikedResources,
 };

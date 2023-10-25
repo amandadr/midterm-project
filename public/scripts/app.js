@@ -21,8 +21,8 @@ function getResourcePoster(id) {
     });
 }
 
-function getResourceRating() {
-  let url = "/api/resources/rating";
+function getResourceRating(id) {
+  let url = `/api/resources/rating/${id}`;
   return $.ajax({
     url,
     dataType: "json",
@@ -37,8 +37,8 @@ function getResourceRating() {
     });
 }
 
-function getResourceLikes() {
-  let url = "/api/resources/likes";
+function getResourceLikes(id) {
+  let url = `/api/resources/likes/${id}`;
   return $.ajax({
     url,
     dataType: "json",
