@@ -7,15 +7,21 @@ const createResourceElement = function (resourcesObject) {
     .then(([name, rating, likes]) => {
       let $resource = $(`
         <div class="resource">
-          <img id="resource-image" src="${resourcesObject.img_url}"></img>
+          <img class="resource-img" src="${resourcesObject.img_url}"></img>
           <section class="resource-info">
-            <h2>${resourcesObject.title}</h2>
-            <h4>${resourcesObject.url}</h4>
-            <h3>${name}</h3>
-            <p>${resourcesObject.description}</p>
-            <section>
-              <label for="rating">Rating: ${rating}</label>
-              <label for="likes">Likes: ${likes}</label>
+            <div class="resource-title">${resourcesObject.title}</div>
+            <div class="resource-url">${resourcesObject.url}</div>
+
+            <section class="resource-user-info">
+              <img class="resource-user-pfp"></img>
+              <div class="resource-user-name">${name}</div>
+            </section>
+
+            <p class="resource-description">${resourcesObject.description}</p>
+
+            <section class="r-i-footer">
+              <div class="resource-rating">Rating: ${rating}</div>
+              <div class="likes">Likes: ${likes}</div>
             </section>
           </section>
         </div>
