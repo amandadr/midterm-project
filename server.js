@@ -48,6 +48,8 @@ app.use("/api/users", userApiRoutes);
 app.use("/api/widgets", widgetApiRoutes);
 app.use("/api/resources", resourcesApiRoutes);
 app.use("/users", usersRoutes);
+
+const profiles = require("./db/queries/profiles");
 // Note: mount other resources here, using the same pattern above
 
 // Home page
@@ -55,7 +57,15 @@ app.use("/users", usersRoutes);
 // Separate them into separate routes files (see above).
 
 app.get("/", (req, res) => {
-  res.render("index");
+  const user = req.session.userId;
+  console.log(user)
+  const userProfile = profiles.getProfile(user);
+  console.log(userProfile)
+  const templateVars = {
+    user,
+    userProfile
+  };
+  res.render("index", templateVars);
 });
 
 app.get("/post", (req, res) => {
