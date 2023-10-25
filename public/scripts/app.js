@@ -21,8 +21,8 @@ function getResourcePoster(id) {
     });
 }
 
-function getResourceRating() {
-  let url = "/api/resources/rating";
+function getResourceRating(id) {
+  let url = `/api/resources/rating/${id}`;
   return $.ajax({
     url,
     dataType: "json",
@@ -37,8 +37,8 @@ function getResourceRating() {
     });
 }
 
-function getResourceLikes() {
-  let url = "/api/resources/likes";
+function getResourceLikes(id) {
+  let url = `/api/resources/likes/${id}`;
   return $.ajax({
     url,
     dataType: "json",
@@ -62,12 +62,24 @@ const submitResource = function (data) {
 };
 
 $(() => {
-  $("#login").submit(function (event) {
+  $("#login-form").submit(function (event) {
     event.preventDefault();
     const formData = $(this).serialize();
     $.post("/users/login", formData)
       .done(function (response) {
         console.log(response);
+      })
+      .fail(function (error) {
+        console.error(error);
+      });
+  });
+
+  $("#register-form").submit(function (event) {
+    event.preventDefault();
+    const formData = $(this).serialize();
+    $.post("/users/", formData)
+      .done(function (response) {
+        console.log("success");
       })
       .fail(function (error) {
         console.error(error);

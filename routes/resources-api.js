@@ -3,6 +3,7 @@ const router = express.Router();
 const resourceQueries = require("../db/queries/resources");
 
 router.get("/", (req, res) => {
+  console.log("API resources");
   resourceQueries
     .getResources()
     .then((resources) => {
@@ -10,17 +11,20 @@ router.get("/", (req, res) => {
     })
     .catch((err) => {
       res.status(500).json({ error: err.message });
+      console.log(err.message);
     });
 });
 
-router.get("/likes", (req, res) => {
+router.get("/likes/:id", (req, res) => {
+  const id = req.params.id;
   resourceQueries
-    .getResourceLikes()
+    .getResourceLikes(id)
     .then((likes) => {
       res.json({ likes });
     })
     .catch((err) => {
       res.status(500).json({ error: err.message });
+      console.log(err.message);
     });
 });
 
@@ -33,31 +37,34 @@ router.get("/poster/:id", (req, res) => {
     })
     .catch((err) => {
       res.status(500).json({ error: err.message });
+      console.log(err.message);
     });
 });
 
-router.get("/rating", (req, res) => {
+router.get("/rating/:id", (req, res) => {
+  const id = req.params.id;
   resourceQueries
-    .getResourceRating()
+    .getResourceRating(id)
     .then((rating) => {
       res.json({ rating });
     })
     .catch((err) => {
       res.status(500).json({ error: err.message });
+      console.log(err.message);
     });
 });
 
 router.post("/", (req, res) => {
-  const { title, description, url, img_url } = req.body;
-  console.log(req.body);
+  const { title, description, url, img_url, category } = req.body;
   const user_id = req.session.userId;
   resourceQueries
-    .addResource(title, description, url, user_id, img_url)
+    .addResource(title, description, url, user_id, img_url, category)
     .then((resource) => {
       res.json({ resource });
     })
     .catch((err) => {
       res.status(500).json({ error: err.message });
+      console.log(err.message);
     });
 });
 
