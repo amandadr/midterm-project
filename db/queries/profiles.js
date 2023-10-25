@@ -1,5 +1,12 @@
 const db = require("../connection");
 
+const getAllProfiles = () => {
+  const queryString = `SELECT * FROM profiles`;
+  return db.query(queryString).then((data) => {
+    return data.rows;
+  });
+};
+
 const getProfile = (id) => {
   const queryString = `SELECT * FROM profiles WHERE user_id = $1`;
   const queryParams = [id];
