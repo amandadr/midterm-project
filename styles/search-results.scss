@@ -1,0 +1,10 @@
+@import './partial';
+
+.sr-head {
+  border-bottom: .2rem solid $color_secondary;
+  width: 80%;
+  margin: 1rem;
+  @include flex-row($justify: space-between);
+  font-size: larger;
+  @include emphasize();
+}

@@ -62,6 +62,21 @@ app.get("/post", (req, res) => {
   res.render("newResource");
 });
 
+// TEMP PFP WORKAREA ///
+app.get("/userpf", (req, res) => {
+  res.render("profile-page");
+});
+
+// TEMP EDIT PF WORKAREA ///
+app.get("/editpf", (req, res) => {
+  res.render("edit-profile");
+});
+
+// TEMP SEARCH-RESULTS WORKAREA ///
+app.get("/results", (req, res) => {
+  res.render("search-results");
+});
+
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
 });

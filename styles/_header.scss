@@ -1,0 +1,52 @@
+@import './partial';
+nav {
+  height: 15vh;
+  width: 100vw;
+  @include background_ducks;
+  color: navajowhite;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  span {
+    width: 100vw;
+    @include flex-row($justify: space-between);
+    align-items: center;
+
+    .nav-left {
+      width: 20vw;
+      margin-inline-start: 1rem;
+      @include flex-row($justify: space-between);
+      #logo {
+        height: 3rem;
+        width: 3rem;
+      }
+      .searchbar {
+        @include flex-column($align: center);
+        #search-text {
+          height: 1.75rem;
+          width: fit-content;
+          align-items: center;
+        }
+      }
+    }
+
+    #new-quack-btn {
+      height: 3rem;
+      width: 4rem;
+    }
+
+    .nav-right {
+      margin-inline-start: 6rem;
+      margin-inline-end: 1rem;
+      font-size: 1rem;
+      @include flex-column($align: flex-end);
+      justify-content: space-evenly;
+      .login,
+      .register {
+        height: 1.5rem;
+        @include flex-row($justify: space-evenly);
+      }
+    }
+  }
+}

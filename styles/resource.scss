@@ -1,0 +1,55 @@
+@import './partial';
+
+.resource {
+  border: $border;
+  width: 20%;
+  height: max-content;
+  margin-block-start: 2rem;
+  @include flex-column($align: center);
+  justify-content: space-evenly;
+
+  .resource-img {
+    margin-top: .5rem;
+    height: 6rem;
+    width: 6rem;
+  }
+
+  .resource-info {
+    height: 25%;
+    margin-block-end: .1rem;
+    @include flex-column($align: center);
+    justify-content: space-between;
+
+    .resource-title {
+      font-size: large;
+      @include emphasize();
+    }
+
+    .resource-url {
+      font-size: small;
+    }
+
+    .resource-user-info {
+      @include flex-row($justify: space-between);
+      align-items: center;
+
+      .resource-user-pfp {
+        height: 2rem;
+        width: 2rem;
+        margin-right: .25rem;
+      }
+    }
+
+    .resource-description {
+      width: 80%;
+      font-size: small;
+    }
+
+    .r-i-footer {
+      width: 80%;
+      margin-bottom: .5rem;
+      @include flex-row($justify: space-between);
+      font-size: small;
+    }
+  }
+}
