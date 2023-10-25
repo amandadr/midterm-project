@@ -4,6 +4,7 @@ require("dotenv").config();
 // Web server config
 const sassMiddleware = require("./lib/sass-middleware");
 const express = require("express");
+const session = require("express-session");
 const morgan = require("morgan");
 
 const PORT = process.env.PORT || 8080;
@@ -25,6 +26,13 @@ app.use(
   })
 );
 app.use(express.static("public"));
+app.use(
+  session({
+    secret: "keyboard cat",
+    resave: false,
+    saveUninitialized: true,
+  })
+);
 
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
