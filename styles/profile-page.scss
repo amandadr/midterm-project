@@ -75,17 +75,32 @@
 
       .cq-top {
         width: 100%;
+        padding: .2rem;
         font-size: medium;
         @include flex-row($justify: space-between);
+        align-items: last baseline;
+
+        .cq-img {
+          width: 100%;
+          @include flex-column($align: flex-start);
+
+          #img_url {
+            height: 50%;
+            width: 100%;
+            font-size: small;
+          }
+        }
 
         .cq-category {
           width: 45%;
-          @include flex-row($justify: space-between);
+          padding: .2rem;
+          @include flex-column($align: center);
         }
       }
 
       .cq-middle {
         width: 100%;
+        padding: .2rem;
         font-size: medium;
         @include flex-row($justify: space-between);
         ;
@@ -104,12 +119,13 @@
       .cq-bottom {
         height: 40%;
         width: 100%;
+        padding: .2rem;
         display: flex;
         align-items: flex-end;
         font-size: medium;
 
         .cq-description {
-          height: 90%;
+          height: 100%;
           width: 70%;
           font-size: small;
           margin-right: .5rem;
@@ -151,7 +167,9 @@
         .resources {
           margin-left: 1rem;
 
-          .resource-url, .resource-user-info, .resource-description {
+          .resource-url,
+          .resource-user-info,
+          .resource-description {
             display: none;
           }
         }

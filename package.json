@@ -5,28 +5,29 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js",
+    "start": "nodemon server.js --exec babel-node --presets react",
     "local": "./node_modules/.bin/nodemon -L --ignore public/",
     "db:reset": "node bin/resetdb.js",
-    "sass-watch": "sass styles:public/styles --watch --poll --no-source-map"
+    "sass-watch": "sass styles:public/styles --watch --poll --no-source-map",
+    "babel-version": "babel --version"
   },
   "author": "Lighthouse Labs",
   "license": "ISC",
   "dependencies": {
-    "@emotion/react": "^11.11.1",
-    "@emotion/styled": "^11.11.0",
     "@fontsource/roboto": "^5.0.8",
-    "@mui/material": "^5.14.14",
     "chalk": "^2.4.2",
     "dotenv": "^2.0.0",
     "ejs": "^2.6.2",
     "express": "^4.17.1",
     "express-session": "^1.17.3",
     "morgan": "^1.9.1",
+    "muicss": "^0.10.3",
     "pg": "^8.5.0",
     "sass": "^1.35.1"
   },
   "devDependencies": {
+    "babel-cli": "6.26.0",
+    "babel-preset-react": "^6.24.1",
     "nodemon": "^2.0.10"
   },
   "peerDependencies": {
