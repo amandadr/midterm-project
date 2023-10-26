@@ -9,8 +9,16 @@ router.get("/", (req, res) => {
   res.redirect(`/${id}`);
 });
 
-router.get("/:id", (req, res) => {
-  res.render("profile-page");
+router.get(`/:`, (req, res) => {
+  const user = req.session.userId;
+  const userDetails = users.getUserWithId(user);
+  const userProfile = profiles.getProfile(user);
+  const templateVars = {
+    user,
+    userDetails,
+    userProfile
+  };
+  res.render("profile-page", templateVars);
 });
 
 module.exports = router;

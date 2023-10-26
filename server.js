@@ -50,10 +50,11 @@ app.use("/api/users", userApiRoutes);
 app.use("/api/widgets", widgetApiRoutes);
 app.use("/api/resources", resourcesApiRoutes);
 app.use("/users", usersRoutes);
-
-const profiles = require("./db/queries/profiles");
 app.use("/profiles", profilesRoutes);
 app.use("/api/profiles", profilesApiRoutes);
+
+const profiles = require("./db/queries/profiles");
+const users = require("./db/queries/users");
 // Note: mount other resources here, using the same pattern above
 
 // Home page
@@ -62,24 +63,24 @@ app.use("/api/profiles", profilesApiRoutes);
 
 app.get("/", (req, res) => {
   const user = req.session.userId;
+  const userDetails = users.getUserWithId(user);
   const userProfile = profiles.getProfile(user);
   const templateVars = {
     user,
+    userDetails,
     userProfile
   };
   res.render("index", templateVars);
 });
 
-app.get("/post", (req, res) => {
-  res.render("newResource");
-});
-
 // TEMP PFP WORKAREA ///
 app.get("/userpf", (req, res) => {
   const user = req.session.userId;
+  const userDetails = users.getUserWithId(user);
   const userProfile = profiles.getProfile(user);
   const templateVars = {
     user,
+    userDetails,
     userProfile
   };
   res.render("profile-page", templateVars);
@@ -88,9 +89,11 @@ app.get("/userpf", (req, res) => {
 // TEMP EDIT PF WORKAREA ///
 app.get("/editpf", (req, res) => {
   const user = req.session.userId;
+  const userDetails = users.getUserWithId(user);
   const userProfile = profiles.getProfile(user);
   const templateVars = {
     user,
+    userDetails,
     userProfile
   };
   res.render("edit-profile", templateVars);
@@ -99,9 +102,11 @@ app.get("/editpf", (req, res) => {
 // TEMP VIEW RESULT WORKAREA ///
 app.get("/viewres", (req, res) => {
   const user = req.session.userId;
+  const userDetails = users.getUserWithId(user);
   const userProfile = profiles.getProfile(user);
   const templateVars = {
     user,
+    userDetails,
     userProfile
   };
   res.render("view-resource", templateVars);
@@ -110,9 +115,11 @@ app.get("/viewres", (req, res) => {
 // TEMP SEARCH-RESULTS WORKAREA ///
 app.get("/results", (req, res) => {
   const user = req.session.userId;
+  const userDetails = users.getUserWithId(user);
   const userProfile = profiles.getProfile(user);
   const templateVars = {
     user,
+    userDetails,
     userProfile
   };
   res.render("search-results", templateVars);

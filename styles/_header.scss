@@ -13,19 +13,39 @@ nav {
     align-items: center;
 
     .nav-left {
-      width: 20vw;
+      height: fit-content;
+      width: 30%;
       margin-inline-start: 1rem;
       @include flex-row($justify: space-between);
-      #logo {
-        height: 3rem;
+
+      #logo-container {
         width: 3rem;
+
+        #logo {
+          height: 4rem;
+          width: 4rem;
+        }
       }
+
       .searchbar {
+        height: 4rem;
+        width: 70%;
+        margin-top: .5rem;
         @include flex-column($align: center);
+
         #search-text {
           height: 1.75rem;
-          width: fit-content;
+          width: 100%;
+          margin-bottom: .1rem;
+          display: flex;
+          align-items: flex-start;
+        }
+        #search-btn {
+          height: 1.75rem;
+          width: 50%;
+          display: flex;
           align-items: center;
+          justify-content: center;
         }
       }
     }
