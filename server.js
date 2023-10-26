@@ -62,12 +62,7 @@ app.use("/api/profiles", profilesApiRoutes);
 
 app.get("/", (req, res) => {
   const user = req.session.userId;
-  const userProfile = profiles.getProfile(user);
-  const templateVars = {
-    user,
-    userProfile
-  };
-  res.render("index", templateVars);
+  res.render("index");
 });
 
 app.get("/post", (req, res) => {
@@ -77,45 +72,25 @@ app.get("/post", (req, res) => {
 // TEMP PFP WORKAREA ///
 app.get("/userpf", (req, res) => {
   const user = req.session.userId;
-  const userProfile = profiles.getProfile(user);
-  const templateVars = {
-    user,
-    userProfile
-  };
-  res.render("profile-page", templateVars);
+  res.render("profile-page");
 });
 
 // TEMP EDIT PF WORKAREA ///
 app.get("/editpf", (req, res) => {
   const user = req.session.userId;
-  const userProfile = profiles.getProfile(user);
-  const templateVars = {
-    user,
-    userProfile
-  };
-  res.render("edit-profile", templateVars);
+  res.render("edit-profile");
 });
 
 // TEMP VIEW RESULT WORKAREA ///
 app.get("/viewres", (req, res) => {
   const user = req.session.userId;
-  const userProfile = profiles.getProfile(user);
-  const templateVars = {
-    user,
-    userProfile
-  };
-  res.render("view-resource", templateVars);
+  res.render("view-resource");
 });
 
 // TEMP SEARCH-RESULTS WORKAREA ///
 app.get("/results", (req, res) => {
   const user = req.session.userId;
-  const userProfile = profiles.getProfile(user);
-  const templateVars = {
-    user,
-    userProfile
-  };
-  res.render("search-results", templateVars);
+  res.render("search-results");
 });
 
 // TEMP PIC REDIRECT ///
