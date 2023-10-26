@@ -3,7 +3,6 @@ const router = express.Router();
 const resourceQueries = require("../db/queries/resources");
 
 router.get("/", (req, res) => {
-  console.log("API resources");
   resourceQueries
     .getResources()
     .then((resources) => {

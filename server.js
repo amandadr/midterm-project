@@ -72,32 +72,35 @@ app.get("/post", (req, res) => {
 
 // TEMP PFP WORKAREA ///
 app.get("/userpf", (req, res) => {
-  res.render("profile-page");
+  const user = req.session.userId;
+  const userProfile = profiles.getProfile(user);
+  const templateVars = {
+    user,
+    userProfile
+  };
+  res.render("profile-page", templateVars);
 });
 
 // TEMP EDIT PF WORKAREA ///
 app.get("/editpf", (req, res) => {
-  res.render("edit-profile");
+  const user = req.session.userId;
+  const userProfile = profiles.getProfile(user);
+  const templateVars = {
+    user,
+    userProfile
+  };
+  res.render("edit-profile", templateVars);
 });
 
 // TEMP SEARCH-RESULTS WORKAREA ///
 app.get("/results", (req, res) => {
-  res.render("search-results");
-});
-
-// TEMP PFP WORKAREA ///
-app.get("/userpf", (req, res) => {
-  res.render("profile-page");
-});
-
-// TEMP EDIT PF WORKAREA ///
-app.get("/editpf", (req, res) => {
-  res.render("edit-profile");
-});
-
-// TEMP SEARCH-RESULTS WORKAREA ///
-app.get("/results", (req, res) => {
-  res.render("search-results");
+  const user = req.session.userId;
+  const userProfile = profiles.getProfile(user);
+  const templateVars = {
+    user,
+    userProfile
+  };
+  res.render("search-results", templateVars);
 });
 
 app.listen(PORT, () => {
