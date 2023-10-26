@@ -69,9 +69,10 @@ $(() => {
   });
 
   const loadResources = function () {
-    $.get("/api/resources")
+    $.get(`/api/resources/${window.resourceId}`)
       .done((resources) => {
-        renderResources(resources.resources);
+        console.log(resources);
+        renderResources([resources.resource]);
       })
       .fail((error) => {
         console.log(error);

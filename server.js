@@ -42,6 +42,7 @@ const usersRoutes = require("./routes/users");
 const resourcesApiRoutes = require("./routes/resources-api");
 const profilesRoutes = require("./routes/profiles");
 const profilesApiRoutes = require("./routes/profiles-api");
+const resourcesRoutes = require("./routes/resources");
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -50,6 +51,7 @@ app.use("/api/users", userApiRoutes);
 app.use("/api/widgets", widgetApiRoutes);
 app.use("/api/resources", resourcesApiRoutes);
 app.use("/users", usersRoutes);
+app.use("/resources", resourcesRoutes);
 
 const profiles = require("./db/queries/profiles");
 app.use("/profiles", profilesRoutes);
@@ -65,7 +67,7 @@ app.get("/", (req, res) => {
   const userProfile = profiles.getProfile(user);
   const templateVars = {
     user,
-    userProfile
+    userProfile,
   };
   res.render("index", templateVars);
 });
@@ -80,7 +82,7 @@ app.get("/userpf", (req, res) => {
   const userProfile = profiles.getProfile(user);
   const templateVars = {
     user,
-    userProfile
+    userProfile,
   };
   res.render("profile-page", templateVars);
 });
@@ -91,7 +93,7 @@ app.get("/editpf", (req, res) => {
   const userProfile = profiles.getProfile(user);
   const templateVars = {
     user,
-    userProfile
+    userProfile,
   };
   res.render("edit-profile", templateVars);
 });
@@ -102,7 +104,7 @@ app.get("/viewres", (req, res) => {
   const userProfile = profiles.getProfile(user);
   const templateVars = {
     user,
-    userProfile
+    userProfile,
   };
   res.render("view-resource", templateVars);
 });
@@ -113,15 +115,16 @@ app.get("/results", (req, res) => {
   const userProfile = profiles.getProfile(user);
   const templateVars = {
     user,
-    userProfile
+    userProfile,
   };
   res.render("search-results", templateVars);
 });
 
 // TEMP PIC REDIRECT ///
 app.get("/null", (req, res) => {
-
-  res.redirect("https://i.etsystatic.com/34711428/r/il/9c16cb/4756246624/il_fullxfull.4756246624_88x2.jpg");
+  res.redirect(
+    "https://i.etsystatic.com/34711428/r/il/9c16cb/4756246624/il_fullxfull.4756246624_88x2.jpg"
+  );
 });
 
 app.listen(PORT, () => {
