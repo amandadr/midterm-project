@@ -1,5 +1,6 @@
 node_modules/
 public/styles
+mui/
 .env
 *.log
 *.sqlite3
