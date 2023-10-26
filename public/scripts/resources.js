@@ -10,8 +10,9 @@ const createResourceElement = function (resourcesObject) {
         <div class="resources">
           <img class="resource-img" src="${resourcesObject.img_url}"></img>
           <section class="resource-info">
-            <div class="resource-title">${resourcesObject.title}</div>
-            <div class="resource-url">${resourcesObject.url}</div>
+            <div class="resource-title">
+            <a class="resource-url" href="${resourcesObject.url}">${resourcesObject.title}</a>
+            </div>
 
             <section class="resource-user-info">
               <img class="resource-user-pfp"></img>
@@ -51,7 +52,6 @@ const renderResources = function (resourcesArray) {
     })
     .catch((error) => {
       console.error(error);
-      // Handle the error as needed
     });
 };
 

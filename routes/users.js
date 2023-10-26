@@ -12,7 +12,7 @@ const router = express.Router();
 router.get("/", (req, res) => {
   const user = req.session.userID;
   const templateVars = {
-    user
+    user,
   };
   res.render("users", templateVars);
 });
@@ -31,7 +31,7 @@ router.post("/", (req, res) => {
     })
     .catch((err) => {
       console.log(err.message);
-      res.send(err)
+      res.send(err);
     });
 });
 

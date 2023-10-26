@@ -20,10 +20,11 @@ const getResourceLikes = (resourceId) => {
 
 const getResourceRating = (resourceId) => {
   return db
-    .query(`SELECT AVG(rating) FROM ratings WHERE resource_id = $1;`, [
-      resourceId,
-    ])
-    .then((data) => data.rows[0].avg);
+    .query(
+      `SELECT ROUND(AVG(rating), 1) FROM ratings WHERE resource_id = $1;`,
+      [resourceId]
+    )
+    .then((data) => data.rows[0].round);
 };
 
 const addResource = (title, description, url, user_id, img_url) => {
