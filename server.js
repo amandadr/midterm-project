@@ -66,10 +66,8 @@ app.use("/api/profiles", profilesApiRoutes);
 
 app.get("/", (req, res) => {
   const user = req.session.userId;
-  const userProfile = profiles.getProfile(user);
   const templateVars = {
     user,
-    userProfile,
   };
   res.render("index", templateVars);
 });
