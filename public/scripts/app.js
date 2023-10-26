@@ -61,6 +61,22 @@ const submitResource = function (data) {
   });
 };
 
+const getResourceById = function (id) {
+  let url = `/api/resources/${id}`;
+  return $.ajax({
+    url,
+    dataType: "json",
+  })
+    .then((data) => {
+      const resource = data.resource;
+      return resource;
+    })
+    .catch((error) => {
+      console.error(error);
+      throw error;
+    });
+};
+
 $(() => {
   $("#login-form").submit(function (event) {
     event.preventDefault();

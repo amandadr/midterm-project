@@ -88,6 +88,52 @@
       width: 100%;
       @include flex-column($align: center);
 
+      #vr-create-comment {
+        width: 80%;
+        padding: .3rem;
+        @include flex-column($align: flex-start);
+        border: $border;
+
+        .vr-c-c-user {
+          width: 20%;
+          margin-bottom: 1.5rem;
+          @include flex-row($justify: space-around);
+          align-items: center;
+
+          .vr-c-c-user-pfp {
+            height: 4rem;
+            width: 4rem;
+            margin-right: 1rem;
+          }
+
+          .vr-c-c-user-name {
+            @include emphasize();
+          }
+        }
+
+        .vr-c-c-bottom {
+          width: 90%;
+          margin-left: 2rem;
+          margin-bottom: .5rem;
+          @include flex-column($align: flex-end);
+
+          .vr-c-c-body {
+            width: 100%;
+            margin-left: 2rem;
+            margin-bottom: 1.5rem;
+            @include flex-column($align: flex-start);
+            resize: none;
+            outline: none;
+            border: none;
+            background-color: rgba(195, 239, 224, 0.693);
+          }
+
+          #vr-c-c-btn {
+            @include flex-row($justify: center);
+          }
+        }
+      }
+
       .vr-comments-box {
         width: 80%;
         padding: .3rem;
@@ -111,6 +157,7 @@
         }
 
         .vr-comments-body {
+          width: 90%;
           margin-left: 2rem;
           margin-bottom: 1.5rem;
           @include flex-column($align: flex-start);
