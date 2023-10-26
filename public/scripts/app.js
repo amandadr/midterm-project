@@ -101,6 +101,22 @@ const getResourceById = function (id) {
     });
 };
 
+const getProfile = function (id) {
+  let url = `/api/profiles/${id}`;
+  return $.ajax({
+    url,
+    dataType: "json",
+  })
+    .then((data) => {
+      const profile = data.profile;
+      return profile;
+    })
+    .catch((error) => {
+      console.error(error);
+      throw error;
+    });
+};
+
 $(() => {
   $("#login-form").submit(function (event) {
     event.preventDefault();
