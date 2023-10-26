@@ -6,7 +6,8 @@ const createResourceElement = function (resourcesObject) {
   ])
     .then(([name, rating, likes]) => {
       let $resource = $(`
-        <div class="resource">
+        <div class="resources-container">
+        <div class="resources">
           <img class="resource-img" src="${resourcesObject.img_url}"></img>
           <section class="resource-info">
             <div class="resource-title">${resourcesObject.title}</div>
@@ -24,6 +25,7 @@ const createResourceElement = function (resourcesObject) {
               <div class="likes">Likes: ${likes}</div>
             </section>
           </section>
+          </div>
         </div>
       `);
 
@@ -36,7 +38,7 @@ const createResourceElement = function (resourcesObject) {
 };
 
 const renderResources = function (resourcesArray) {
-  const $resourcesContainer = $("#resources-container");
+  const $resourcesContainer = $(".resources-container");
   $resourcesContainer.empty();
 
   const resourcePromises = resourcesArray.map((resource) =>

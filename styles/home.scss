@@ -1,0 +1,10 @@
+@import './partial';
+
+.resources-container {
+  border: $border;
+  width: 100%;
+  padding: .2rem;
+  display: inline-grid;
+  grid-template-columns: repeat(5, auto);
+  grid-gap: .5rem;
+}

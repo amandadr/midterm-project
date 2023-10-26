@@ -1,7 +1,7 @@
 @import './partial';
 
 .pp-main {
-  height: 85vh;
+  min-height: 100vh;
   width: 100%;
   @include flex-row($justify: space-between);
 
@@ -139,19 +139,21 @@
 
     .pp-right-bottom {
       padding-inline: .5rem;
-      .resource {
-        width: 20%;
 
-        .resource-url {
-          display: none;
-        }
+      .resources-container {
+        border: .2rem solid rgba(255, 235, 205, 0.66);
+        width: 100%;
+        padding: .2rem;
+        display: inline-grid;
+        grid-template-columns: repeat(4, auto);
+        grid-gap: .5rem;
 
-        .resource-user-info {
-          display: none;
-        }
+        .resources {
+          margin-left: 1rem;
 
-        .resource-description {
-          display: none;
+          .resource-url, .resource-user-info, .resource-description {
+            display: none;
+          }
         }
       }
     }
