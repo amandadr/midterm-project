@@ -11,7 +11,7 @@
 
 <body>
   <%- include('./partials/header'); %>
-    <form class="pp-main" action="/api/resources" method="post" id="resources">
+    <section class="pp-main">
       <section class="pp-left">
         <section class="pp-user-info">
           <img class="pp-user-pfp"
@@ -35,7 +35,7 @@
           </p>
         </section>
 
-        <section class="create-quack">
+        <form class="create-quack" action="/api/resources" method="post" id="resources">
           <div class="cq-head">
             Quack About:
           </div>
@@ -70,7 +70,7 @@
             <textarea class="cq-description" placeholder="Description" id="description" name="description" rows="4" maxlength="150" required></textarea>
             <button class="cq-btn" id="post-resource" type="submit">Quack!</button>
           </section>
-        </section>
+        </form>
       </section>
 
       <section class="pp-right">
@@ -92,7 +92,7 @@
           <div class="box"><%- include('./partials/resource'); %></div>
         </section>
       </section>
-    </form>
+    </section>
 
     <script src="/vendor/jquery-3.0.0.js"></script>
     <script src="/scripts/app.js"></script>

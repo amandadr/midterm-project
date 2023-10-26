@@ -107,6 +107,12 @@ app.get("/results", (req, res) => {
   res.render("search-results", templateVars);
 });
 
+// TEMP IC REDIRECT ///
+app.get("/null", (req, res) => {
+
+  res.redirect("https://i.etsystatic.com/34711428/r/il/9c16cb/4756246624/il_fullxfull.4756246624_88x2.jpg");
+});
+
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
 });
