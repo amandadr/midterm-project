@@ -22,7 +22,7 @@ const createResourceElement = function (resourcesObject) {
             <p class="resource-description">${resourcesObject.description}</p>
 
             <section class="r-i-footer">
-              <div class="resource-rating">Rating: ${rating}</div>
+              <div class="resource-rating">Rating: ${rating}⭐</div>
               <div class="likes">Likes: ${likes}</div>
             </section>
           </section>
