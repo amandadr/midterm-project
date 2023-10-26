@@ -21,6 +21,22 @@ function getResourcePoster(id) {
     });
 }
 
+function getCommentsPoster(id) {
+  let url = `/api/comments/poster/${id}`;
+  return $.ajax({
+    url,
+    dataType: "json",
+  })
+    .then((data) => {
+      const name = data.poster.name;
+      return name;
+    })
+    .catch((error) => {
+      console.error(error);
+      throw error;
+    });
+}
+
 function getResourceRating(id) {
   let url = `/api/resources/rating/${id}`;
   return $.ajax({
@@ -54,6 +70,14 @@ function getResourceLikes(id) {
 }
 
 const submitResource = function (data) {
+  return $.ajax({
+    method: "POST",
+    url: "/api/resources",
+    data,
+  });
+};
+
+const submitComment = function (data) {
   return $.ajax({
     method: "POST",
     url: "/api/resources",

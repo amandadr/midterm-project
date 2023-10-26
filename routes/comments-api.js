@@ -41,12 +41,12 @@ router.get("/poster/:id", (req, res) => {
 });
 
 router.post("/", (req, res) => {
-  const { title, description, url, img_url, category } = req.body;
-  const user_id = req.session.userId;
+  const { comment, resourceId } = req.body;
+  const userId = req.session.userId;
   resourceQueries
-    .addResource(title, description, url, user_id, img_url, category)
-    .then((resource) => {
-      res.json({ resource });
+    .addComment(comment, resourceId, userId)
+    .then((comment) => {
+      res.json({ comment });
     })
     .catch((err) => {
       res.status(500).json({ error: err.message });
