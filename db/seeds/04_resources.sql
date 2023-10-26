@@ -1,2 +1,10 @@
 INSERT INTO resources (title, description, url, category, user_id) VALUES ('test', 'test', 'https://www.google.com', 'test', 1);
-INSERT INTO resources (title, description, url, category, user_id) VALUES ('test2', 'test2', 'https://www.youtube.com', 'test', 2);
+INSERT INTO resources (title, description, url, category, user_id) VALUES ('test2', 'test2', 'https://www.google.com', 'test2', 2);
+INSERT INTO resources (title, description, url, category, user_id) VALUES ('test3', 'test3', 'https://www.youtube.com', 'test', 3);
+INSERT INTO resources (title, description, url, category, user_id) VALUES ('test4', 'test4', 'https://www.youtube.com', 'test', 4);
+INSERT INTO resources (title, description, url, category, user_id) VALUES ('test5', 'test5', 'https://www.youtube.com', 'test', 5);
+INSERT INTO resources (title, description, url, category, user_id) VALUES ('test6', 'test6', 'https://www.youtube.com', 'test', 6);
+INSERT INTO resources (title, description, url, category, user_id) VALUES ('test7', 'test7', 'https://www.youtube.com', 'test', 7);
+INSERT INTO resources (title, description, url, category, user_id) VALUES ('test8', 'test8', 'https://www.youtube.com', 'test', 8);
+INSERT INTO resources (title, description, url, category, user_id) VALUES ('test9', 'test9', 'https://www.youtube.com', 'test', 9);
+INSERT INTO resources (title, description, url, category, user_id) VALUES ('test10', 'test10', 'https://www.youtube.com', 'test', 10);
