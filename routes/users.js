@@ -7,6 +7,7 @@
 
 const express = require("express");
 const users = require("../db/queries/users");
+const profiles = require("../db/queries/profiles");
 const router = express.Router();
 
 router.get("/", (req, res) => {
@@ -26,6 +27,8 @@ router.post("/", (req, res) => {
       if (!user) {
         return res.send({ error: "error" });
       }
+      req.session.userId = user.rows[0].id;
+      profiles.addProfile(name, user.rows[0].id);
 
       res.redirect("/");
     })
