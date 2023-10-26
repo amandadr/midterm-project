@@ -1,0 +1,9 @@
+@import './partial';
+
+.vr-main {
+  @include flex-column($align: flex-start);
+
+  .resources {
+    
+  }
+}
