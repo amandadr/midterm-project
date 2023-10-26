@@ -17,8 +17,25 @@
           <img class="resource-img"
             src="https://i.etsystatic.com/34711428/r/il/9c16cb/4756246624/il_fullxfull.4756246624_88x2.jpg"></img>
           <section class="r-i-footer">
-            <div class="resource-rating">Rating</div>
-            <div class="likes">Likes</div>
+            <section class="r-i-f-rate">
+              <div class="resource-rating">Rating: </div>
+              <form class="rate" action="/rate" method="POST">
+                <select id="rate-menu" >
+                <option value="1">1⭐</option>
+                <option value="2">2⭐</option>
+                <option value="3">3⭐</option>
+                <option value="4">4⭐</option>
+                <option value="5">5⭐</option>
+              </select>
+              <button id="rate-btn" type="submit">Rate</button>
+              </form>
+            </section>
+            <section class="r-i-f-like">
+              <div class="likes">Likes: </div>
+              <form class="like" action="/like" method="POST">
+                <button id="like-btn" type="submit">Like</button>
+              </form>
+            </section>
           </section>
         </section>
 
