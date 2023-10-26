@@ -1,0 +1,1 @@
+INSERT INTO profiles (display_name, pfp_url, bio, pronouns, created_at, updated_at, user_id) VALUES ('Duq Quack', 'https://t3.ftcdn.net/jpg/01/06/13/54/360_F_106135410_hai531zdSrXxSDDuXvtbLtpslpDgb1d9.jpg', 'I am a duck.', 'quack/honk', DEFAULT, DEFAULT, '1');

@@ -58,9 +58,7 @@ const profiles = require("./db/queries/profiles");
 
 app.get("/", (req, res) => {
   const user = req.session.userId;
-  console.log(user)
   const userProfile = profiles.getProfile(user);
-  console.log(userProfile)
   const templateVars = {
     user,
     userProfile

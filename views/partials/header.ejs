@@ -12,25 +12,25 @@
     </div>
 
     <% if(user){ %>
-    <div class="nav-right">
-      <img id="user-pfp" src="<%= userProfile.pfp_url %>"></img>
-      <div id="user-name">@<%= userProfile.display_name %></div>
+    <div class="nav-right-logged">
+      <img id="user-pfp" src="https://t3.ftcdn.net/jpg/01/06/13/54/360_F_106135410_hai531zdSrXxSDDuXvtbLtpslpDgb1d9.jpg"></img>
+      <div id="user-name">@thisDuck</div>
     </div>
     <% } else{ %>
-      <div class="nav-right">
-        <form class="unlogged login" , id="login-form" , action="/login" , method="POST">
-          <input id="login-user" , type="text" , placeholder="@duqname/email" name="email"></input>
+      <div class="nav-right-unlogged">
+        <form class="login" , id="login-form" , action="/login" , method="POST">
+          <input id="login-user" , type="text" , placeholder="email" name="email"></input>
           <input id="login-password" , type="password" , placeholder="password" name="password"></input>
-          <button class="unlogged login" , id="login-btn" , type="submit">
+          <button class="login" , id="login-btn" , type="submit">
             Login
           </button>
         </form>
 
-        <form class="unlogged register" , id="register-form" , action="/users/" , method="POST">
+        <form class="register" , id="register-form" , action="/users/" , method="POST">
           <input id="register-user" , type="text" , placeholder="@duqname" name="name"></input>
           <input id="register-email" , type="email" , placeholder="email address" name="email"></input>
           <input id="register-password" , type="password" , placeholder="password" name="password"></input>
-          <button class="unlogged register" , id="register-btn" , type="submit">
+          <button class="register" , id="register-btn" , type="submit">
             Register
           </button>
         </form>

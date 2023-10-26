@@ -3,7 +3,6 @@ nav {
   height: 15vh;
   width: 100vw;
   @include background_ducks;
-  color: navajowhite;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -31,12 +30,7 @@ nav {
       }
     }
 
-    #new-quack-btn {
-      height: 3rem;
-      width: 4rem;
-    }
-
-    .nav-right {
+    .nav-right-unlogged {
       margin-inline-start: 6rem;
       margin-inline-end: 1rem;
       font-size: 1rem;
@@ -46,6 +40,25 @@ nav {
       .register {
         height: 1.5rem;
         @include flex-row($justify: space-evenly);
+      }
+
+    }
+
+    .nav-right-logged {
+      margin: 1rem;
+      @include flex-row($justify: space-between);
+      align-items: center;
+
+      #user-pfp {
+        height: 3rem;
+        width: 3rem;
+        margin: .2rem;
+      }
+
+      #user-name {
+        margin: .2rem;
+        background-color: rgba(199, 227, 251, 0.859);
+        font-size: medium;
       }
     }
   }
