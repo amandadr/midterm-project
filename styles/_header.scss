@@ -1,7 +1,7 @@
 @import './partial';
 nav {
   height: 15vh;
-  width: 100vw;
+  width: 100%;
   @include background_ducks;
   display: flex;
   align-items: center;
