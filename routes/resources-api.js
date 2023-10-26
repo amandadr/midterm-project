@@ -14,6 +14,19 @@ router.get("/", (req, res) => {
     });
 });
 
+router.get("/:id", (req, res) => {
+  const id = req.params.id;
+  resourceQueries
+    .getResourceById(id)
+    .then((resource) => {
+      res.json({ resource });
+    })
+    .catch((err) => {
+      res.status(500).json({ error: err.message });
+      console.log(err.message);
+    });
+});
+
 router.get("/likes/:id", (req, res) => {
   const id = req.params.id;
   resourceQueries
