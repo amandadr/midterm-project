@@ -63,11 +63,11 @@ const users = require("./db/queries/users");
 
 app.get("/", (req, res) => {
   const user = req.session.userId;
-  const userDetails = users.getUserWithId(user);
-  const userProfile = profiles.getProfile(user);
+  const userName = users.getUserWithId(user)['name'];
+  const userProfile = profiles.getProfile(user).pfp_url;
   const templateVars = {
     user,
-    userDetails,
+    userName,
     userProfile
   };
   res.render("index", templateVars);

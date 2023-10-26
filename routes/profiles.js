@@ -9,16 +9,8 @@ router.get("/", (req, res) => {
   res.redirect(`/${id}`);
 });
 
-router.get(`/:`, (req, res) => {
-  const user = req.session.userId;
-  const userDetails = users.getUserWithId(user);
-  const userProfile = profiles.getProfile(user);
-  const templateVars = {
-    user,
-    userDetails,
-    userProfile
-  };
-  res.render("profile-page", templateVars);
+router.get("/:id", (req, res) => {
+  res.render("profile-page");
 });
 
 module.exports = router;

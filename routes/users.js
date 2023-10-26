@@ -17,6 +17,8 @@ router.get("/", (req, res) => {
   res.render("users", templateVars);
 });
 
+
+//  REGISTER
 router.post("/", (req, res) => {
   const { name, email, password } = req.body;
   const user = { name, email, password };
@@ -25,9 +27,9 @@ router.post("/", (req, res) => {
     .then((user) => {
       if (!user) {
         return res.send({ error: "error" });
+      } else {
+        res.redirect("/");
       }
-
-      res.redirect("/");
     })
     .catch((err) => {
       console.log(err.message);
@@ -35,24 +37,26 @@ router.post("/", (req, res) => {
     });
 });
 
+// LOGIN
 router.post("/login", (req, res) => {
   const { email, password } = req.body;
   users.getUserWithEmail(email).then((user) => {
     if (!user) {
       return res.send({ error: "no user with that email" });
-    }
-    if (user.password !== password) {
+    } else if (user.password !== password) {
       return res.send({ error: "invalid password" });
-    }
+    } else {
 
-    req.session.userId = user.id;
-    res.send({
-      user: {
-        name: user.name,
-        email: user.email,
-        id: user.id,
-      },
-    });
+      req.session.userId = user.id;
+      res.send({
+        user: {
+          name: user.name,
+          email: user.email,
+          id: user.id,
+        },
+      });
+
+    }
   });
 });
 

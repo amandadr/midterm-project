@@ -3,7 +3,7 @@
 
 <nav>
   <% user%>
-    <% userDetails%>
+    <% userName%>
       <% userProfile%>
         <span class="nav">
           <div class="nav-left">
@@ -15,30 +15,32 @@
 
 
 
-              <form class="searchbar" , id="search-form" , action="/search:searchInput" , method="POST">
-                <input id="search-text" placeholder="Looking for a Quack?"></input>
-                <button class="searchbar" , id="search-btn" , type="submit">
-                  Search
-                </button>
-              </form>
+            <form class="searchbar" , id="search-form" , action="/search:searchInput" , method="POST">
+              <input id="search-text" placeholder="Looking for a Quack?"></input>
+              <button class="searchbar" , id="search-btn" , type="submit">
+                Search
+              </button>
+            </form>
           </div>
 
           <% if(user){ %>
             <div class="nav-right-logged">
-              <a href="/:<%= user%>" <div id="user-pfp-container" <img id="user-pfp" src="<%= userDetails['pfp_url']%>">
-            </div>
+              <a href="/users/<%= user%>" <div id="user-pfp-container">
+                <img id="user-pfp" src="<%= userProfile%>">
+
             </a>
 
             <div id="user-name">
-              <%= user['name']%>
+              @<%= userName%>
             </div>
             </div>
             <% } else{ %>
               <div class="nav-right-unlogged">
-                <form class="login" , id="login-form" , action="/login" , method="POST">
+                <form class="login" , id="login-form" , action="/users/login" , method="POST">
                   <input id="login-user" , type="text" , placeholder="email" name="email"></input>
                   <input id="login-password" , type="password" , placeholder="password" name="password"></input>
-                  <button class="login mui-btn mui-btn--primary mui-btn--outlined" , id="login-btn" , type="submit">
+                  <button class="login mui-btn mui-btn--primary mui-btn--outlined" , id="login-btn" , type="submit"
+                    onclick="location.href='/';">
                     Login
                   </button>
                 </form>
@@ -47,7 +49,7 @@
                   <input id="register-user" , type="text" , placeholder="@duqname" name="name"></input>
                   <input id="register-email" , type="email" , placeholder="email address" name="email"></input>
                   <input id="register-password" , type="password" , placeholder="password" name="password"></input>
-                  <button class="register" , id="register-btn" , type="submit">
+                  <button class="register" , id="register-btn" , type="submit" onclick="location.href='/';">
                     Register
                   </button>
                 </form>
