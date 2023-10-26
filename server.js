@@ -96,6 +96,17 @@ app.get("/editpf", (req, res) => {
   res.render("edit-profile", templateVars);
 });
 
+// TEMP VIEW RESULT WORKAREA ///
+app.get("/viewres", (req, res) => {
+  const user = req.session.userId;
+  const userProfile = profiles.getProfile(user);
+  const templateVars = {
+    user,
+    userProfile
+  };
+  res.render("view-resource", templateVars);
+});
+
 // TEMP SEARCH-RESULTS WORKAREA ///
 app.get("/results", (req, res) => {
   const user = req.session.userId;
@@ -107,7 +118,7 @@ app.get("/results", (req, res) => {
   res.render("search-results", templateVars);
 });
 
-// TEMP IC REDIRECT ///
+// TEMP PIC REDIRECT ///
 app.get("/null", (req, res) => {
 
   res.redirect("https://i.etsystatic.com/34711428/r/il/9c16cb/4756246624/il_fullxfull.4756246624_88x2.jpg");
