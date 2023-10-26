@@ -56,10 +56,20 @@ const getResourceById = (id) => {
     .then((data) => data.rows[0]);
 };
 
+const getAllComments = () => {
+  return db.query(`SELECT * FROM comments;`).then((data) => data.rows);
+};
+
 const getResourceComments = (resourceId) => {
   return db
     .query(`SELECT * FROM comments WHERE resource_id = $1;`, [resourceId])
     .then((data) => data.rows);
+};
+
+const getCommentsPoster = (commentId) => {
+  return db
+    .query(`SELECT name FROM users WHERE id = $1;`, [commentId])
+    .then((data) => data.rows[0]);
 };
 
 module.exports = {
@@ -71,5 +81,7 @@ module.exports = {
   getLikedResources,
   getResourcesByUser,
   getResourceById,
+  getAllComments,
   getResourceComments,
+  getCommentsPoster,
 };
