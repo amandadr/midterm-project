@@ -39,8 +39,9 @@ router.post("/", (req, res) => {
 });
 
 router.post("/login", (req, res) => {
-  const { email, password } = req.body;
-  users.getUserWithEmail(email).then((user) => {
+  const email = req.body.email.toLowerCase();
+  const password = req.body.password;
+  users.getUserWithEmail(email.toLowerCase()).then((user) => {
     if (!user) {
       return res.send({ error: "no user with that email" });
     }
