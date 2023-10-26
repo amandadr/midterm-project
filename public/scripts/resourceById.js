@@ -3,8 +3,9 @@ const createResourceElement = function (resourcesObject) {
     getResourcePoster(resourcesObject.user_id),
     getResourceRating(resourcesObject.id),
     getResourceLikes(resourcesObject.id),
+    getProfile(resourcesObject.user_id),
   ])
-    .then(([name, rating, likes]) => {
+    .then(([name, rating, likes, profile]) => {
       let $resource = $(`
         <div class="resources-container">
         <div class="resources">
@@ -15,7 +16,7 @@ const createResourceElement = function (resourcesObject) {
             </div>
 
             <section class="resource-user-info">
-              <img class="resource-user-pfp"></img>
+              <img class="resource-user-pfp" src="${profile[0].pfp_url}"></img>
               <div class="resource-user-name">${name}</div>
             </section>
 
