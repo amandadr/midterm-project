@@ -11,41 +11,37 @@
 
 <body>
   <%- include('./partials/_header'); %>
-    <section class="ep-top">
+  <section class="ep-top">
+      <form class="ep-name" action="/profiles/edit/<%= user %>/" method="POST">
       <section class="ep-img">
         <img class="ep-pfp"
-          src="https://t3.ftcdn.net/jpg/01/06/13/54/360_F_106135410_hai531zdSrXxSDDuXvtbLtpslpDgb1d9.jpg">
+          src="<%= profileData.pfp_url %>">
+          <div class="ep-name-text">Edit pfp_url:</div>
+        <input type="text" name="pfp_url" id="pfp_url_edit" value="<%= profileData.pfp_url %>">
       </section>
 
 
       <section class="ep-img-aside">
-        <form class="ep-name" action="/name" method="POST">
-          <div class="ep-name-text">Devvy Duq</div>
-          <input class="ep-edit-name" placeholder="Edit Name"></input>
-        </form>
+          <div class="ep-name-text">Edit Name:</div>
+          <input class="ep-edit-name" placeholder="Name" name="display_name" id="display_name_edit" value="<%= profileData.display_name %>"></input>
 
         <section class="ep-pronouns" action="/pronouns" method="POST">
-          <div class="ep-pronouns-text">quack/honk</div>
-          <input class="ep-edit-pronouns" placeholder="Edit Pronouns"></input>
+          <div class="ep-pronouns-text">Edit Pronouns:</div>
+          <input class="ep-edit-pronouns" placeholder="Pronouns" name="pronouns" id="pronouns_edit" value="<%= profileData.pronouns %>"></input>
         </section>
-
-        <div class="ep-user-name">@duqname</div>
       </section>
     </section>
 
     <section class="ep-bottom">
       <section class="ep-bio">
-        <form class="edit-bio" action="/bio" method="POST">
         <div class="ep-bio-head">
           Edit Bio:
-          <button class="ep-bio-btn mui-btn mui-btn--small mui-btn--primary" type="submit">Update</button>
         </div>
-
-
-        <textarea
-          class="ep-bio-text">Ducks are a group of species of water birds – relatively small in size and with shorter necks than their close cousins of swans and geese. Along with their longer necked cousins, they make up the biological family of Anatidae.</textarea>
-        </form>
+        
+        <textarea class="ep-bio-text" name="bio" id="bio_edit" cols="30" rows="10" placeholder="New Bio"><%= profileData.bio %></textarea>
       </section>
+      <button class="ep-bio-btn mui-btn mui-btn--small mui-btn--primary" type="submit">Update</button>
+    </form>
     </section>
 
     <%- include('./partials/_scripts'); %>

@@ -1,5 +1,5 @@
 const express = require("express");
-const { getProfile } = require("../db/queries/profiles");
+const { getProfile, editProfile } = require("../db/queries/profiles");
 const { getUserWithId } = require("../db/queries/users");
 const {
   getResourcesByLikedUser,
@@ -77,6 +77,19 @@ router.get("/:id/:category", (req, res) => {
   getResourcesByCategory(category, user)
     .then((resources) => {
       res.json({ resources });
+    })
+    .catch((err) => {
+      res.status(500).json({ error: err.message });
+      console.log(err.message);
+    });
+});
+
+router.post("/edit/:id", (req, res) => {
+  const id = req.params.id;
+  const data = req.body;
+  editProfile(id, data)
+    .then(() => {
+      res.redirect(`/profiles/${id}`);
     })
     .catch((err) => {
       res.status(500).json({ error: err.message });

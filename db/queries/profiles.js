@@ -24,12 +24,12 @@ const addProfile = (display_name, user_id) => {
 };
 
 const editProfile = (id, data) => {
-  const queryString = `UPDATE profiles SET display_name = $1, bio = $2, pronouns = $3, avatar = $4 WHERE user_id = $5`;
+  const queryString = `UPDATE profiles SET display_name = $1, bio = $2, pronouns = $3, pfp_url = $4 WHERE user_id = $5`;
   const queryParams = [
     data.display_name,
     data.bio,
-    data.prnouns,
-    data.avatar,
+    data.pronouns,
+    data.pfp_url,
     id,
   ];
   return db.query(queryString, queryParams).then((data) => {
