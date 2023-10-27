@@ -78,7 +78,6 @@ const submitResource = function (data) {
 };
 
 const submitComment = function (data) {
-  console.log(data);
   return $.ajax({
     method: "POST",
     url: "/api/comments",
@@ -133,3 +132,51 @@ const getProfile = function (id) {
       throw error;
     });
 };
+
+const getResourcesBySearch = function (search) {
+  let url = `/api/resources/search/${search}`;
+  return $.ajax({
+    url,
+    dataType: "json",
+  })
+    .then((data) => {
+      const resources = data.resources;
+      return resources;
+    })
+    .catch((error) => {
+      console.error(error);
+      throw error;
+    });
+};
+
+const submitLike = function (id, data) {
+  return $.ajax({
+    method: "POST",
+    url: `/resources/${id}/like`,
+    data,
+  });
+};
+
+const submitUnlike = function (id, data) {
+  return $.ajax({
+    method: "POST",
+    url: `/resources/${id}/unlike`,
+    data,
+  });
+};
+
+const submitRating = function (id, data) {
+  return $.ajax({
+    method: "POST",
+    url: `/resources/${id}/rate`,
+    data,
+  });
+};
+
+$(() => {
+  $("#search-form").on("submit", function (event) {
+    event.preventDefault();
+    const search = $("#search-text").val();
+    window.location.href = `/resources/search/${search}`;
+  });
+});

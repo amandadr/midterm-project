@@ -27,6 +27,20 @@ router.get("/:id", (req, res) => {
     });
 });
 
+router.get("/search/:q", (req, res) => {
+  const search = req.params.q;
+  resourceQueries
+    .getResourcesBySearch(search)
+    .then((resources) => {
+      console.log(resources);
+      res.json({ resources });
+    })
+    .catch((err) => {
+      res.status(500).json({ error: err.message });
+      console.log(err.message);
+    });
+});
+
 router.get("/likes/:id", (req, res) => {
   const id = req.params.id;
   resourceQueries

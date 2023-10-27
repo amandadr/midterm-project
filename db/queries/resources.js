@@ -86,7 +86,7 @@ const addComment = (comment, resourceId, userId) => {
 
 const likeResource = (resourceId, userId) => {
   const query = {
-    text: "INSERT INTO likes(resource_id, user_id) VALUES($1, $2, $3) RETURNING *",
+    text: "INSERT INTO likes(resource_id, user_id, liked) VALUES($1, $2, $3) RETURNING *",
     values: [resourceId, userId, true],
   };
   return db.query(query).then((res) => res.rows[0]);
@@ -117,6 +117,24 @@ const resourceRatedByUser = (resourceId, userId) => {
     .then((data) => data.rows[0]);
 };
 
+const getResourceLikedByUser = (resourceId, userId) => {
+  return db
+    .query(`SELECT * FROM likes WHERE resource_id = $1 AND user_id = $2;`, [
+      resourceId,
+      userId,
+    ])
+    .then((data) => data.rows[0]);
+};
+
+const getResourcesBySearch = (search) => {
+  return db
+    .query(
+      `SELECT * FROM resources WHERE title ILIKE $1 OR description ILIKE $1;`,
+      [`%${search}%`]
+    )
+    .then((data) => data.rows);
+};
+
 module.exports = {
   getResources,
   getResourcePoster,
@@ -134,4 +152,6 @@ module.exports = {
   unlikeResource,
   rateResource,
   resourceRatedByUser,
+  getResourceLikedByUser,
+  getResourcesBySearch,
 };
