@@ -11,41 +11,39 @@
 
 <body>
   <%- include('./partials/_header'); %>
-  <section class="ep-top">
-      <form class="ep-name" action="/profiles/edit/<%= user %>/" method="POST">
-      <section class="ep-img">
-        <img class="ep-pfp"
-          src="<%= profileData.pfp_url %>">
-          <div class="ep-name-text">Edit pfp_url:</div>
-        <input type="text" name="pfp_url" id="pfp_url_edit" value="<%= profileData.pfp_url %>">
-      </section>
+    <section class="ep-main">
+      <form class="ep-form" action="/profiles/edit/<%= user %>/" method="POST">
+        <img class="ep-pfp" src="<%= profileData.pfp_url %>">
+        <section class="ep-top">
+          <div class="ep-url-text">Edit pfp_url:</div>
+          <input type="text" name="pfp_url" id="pfp_url_edit" value="<%= profileData.pfp_url %>">
 
+        <div class="ep-name-text">Edit Name:</div>
+        <input class="ep-edit-name" placeholder="Name" name="display_name" id="display_name_edit"
+          value="<%= profileData.display_name %>"></input>
 
-      <section class="ep-img-aside">
-          <div class="ep-name-text">Edit Name:</div>
-          <input class="ep-edit-name" placeholder="Name" name="display_name" id="display_name_edit" value="<%= profileData.display_name %>"></input>
-
-        <section class="ep-pronouns" action="/pronouns" method="POST">
           <div class="ep-pronouns-text">Edit Pronouns:</div>
-          <input class="ep-edit-pronouns" placeholder="Pronouns" name="pronouns" id="pronouns_edit" value="<%= profileData.pronouns %>"></input>
+          <input class="ep-edit-pronouns" placeholder="Pronouns" name="pronouns" id="pronouns_edit"
+            value="<%= profileData.pronouns %>"></input>
         </section>
-      </section>
-    </section>
 
-    <section class="ep-bottom">
-      <section class="ep-bio">
-        <div class="ep-bio-head">
-          Edit Bio:
-        </div>
-        
-        <textarea class="ep-bio-text" name="bio" id="bio_edit" cols="30" rows="10" placeholder="New Bio"><%= profileData.bio %></textarea>
-      </section>
-      <button class="ep-bio-btn mui-btn mui-btn--small mui-btn--primary" type="submit">Update</button>
-    </form>
+
+        <section class="ep-bottom">
+          <section class="ep-bio">
+            <div class="ep-bio-head">
+              Edit Bio:
+            </div>
+
+            <textarea class="ep-bio-text" name="bio" id="bio_edit" cols="30" rows="10" maxlength="200"
+              placeholder="New Bio"><%= profileData.bio %></textarea>
+          </section>
+          <button class="ep-bio-btn mui-btn mui-btn--small mui-btn--primary" type="submit">Update</button>
+        </section>
+      </form>
     </section>
 
     <%- include('./partials/_scripts'); %>
-    <script src="/scripts/profile.js"></script>
+      <script src="/scripts/profile.js"></script>
 </body>
 
 </html>

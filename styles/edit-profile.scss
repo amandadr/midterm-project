@@ -1,19 +1,18 @@
 @import './partial';
 
-.ep-top,
+.ep-main,
 .ep-bottom {
-  width: 60%;
+  width: 100%;
   margin: .5rem;
   padding: .5rem;
 }
 
-.ep-top {
-  border-bottom: .2rem solid $color_secondary;
+.ep-main {
+  width: 100%;
   height: 45%;
-  @include flex-row($justify: flex-start);
-  align-items: center;
+  @include flex-column($align: center);
 
-  .ep-img {
+  .ep-form {
     width: 50%;
     @include flex-column($align: center);
     justify-content: space-between;
@@ -22,30 +21,18 @@
       height: 10rem;
       width: 10rem;
       margin: .5rem;
+      outline: .4rem solid $color_dim;
+    }
 
-      .ep-img-btn {
-        @include button_primary;
+    .ep-top {
+      @include flex-column($align: center);
+
+      .ep-url-text, .ep-name-text, .ep-pronouns-text {
+        font-size: large;
+        @include emphasize;
+        margin-top: .4rem;
+        margin-bottom: .2rem;
       }
-    }
-  }
-
-  .ep-img-aside {
-    height: 100%;
-    @include flex-column($align: flex-start);
-    justify-content: space-between;
-
-    .ep-name-text {
-      font-size: large;
-      @include emphasize;
-      margin-bottom: .2rem;
-    }
-
-    .ep-pronouns-text {
-    margin-bottom: .2rem;
-    }
-
-    .ep-name-btn, .ep-pronouns-btn {
-      @include button_primary;
     }
   }
 }
