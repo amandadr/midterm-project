@@ -80,7 +80,7 @@ const submitResource = function (data) {
 const submitComment = function (data) {
   return $.ajax({
     method: "POST",
-    url: "/api/resources",
+    url: "/api/comments",
     data,
   });
 };
@@ -110,6 +110,22 @@ const getProfile = function (id) {
     .then((data) => {
       const profile = data.profile;
       return profile;
+    })
+    .catch((error) => {
+      console.error(error);
+      throw error;
+    });
+};
+
+const getResourcesByUser = function (id) {
+  let url = `/api/users/${id}/resources`;
+  return $.ajax({
+    url,
+    dataType: "json",
+  })
+    .then((data) => {
+      const resources = data.resources;
+      return resources;
     })
     .catch((error) => {
       console.error(error);
