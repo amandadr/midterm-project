@@ -63,7 +63,7 @@ $(() => {
   });
 
   const loadResources = function () {
-    $.get(`/api/users/${window.profileId}/resources`)
+    $.get(`/api/users/${window.userId}/resources`)
       .done((resources) => {
         renderResources(resources.resources);
       })

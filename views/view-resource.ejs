@@ -11,80 +11,27 @@
 
 <body>
   <%- include('./partials/header'); %>
-    <section class="vr-main">
-      <div class="resources">
-        <section class="vr-left">
-          <img class="resource-img"
-            src="https://i.etsystatic.com/34711428/r/il/9c16cb/4756246624/il_fullxfull.4756246624_88x2.jpg"></img>
-          <section class="r-i-footer">
-            <section class="r-i-f-rate">
-              <div class="resource-rating">Rating: </div>
-              <form class="rate" action="/rate" method="POST">
-                <select id="rate-menu" >
-                <option value="1">1⭐</option>
-                <option value="2">2⭐</option>
-                <option value="3">3⭐</option>
-                <option value="4">4⭐</option>
-                <option value="5">5⭐</option>
-              </select>
-              <button id="rate-btn" type="submit">Rate</button>
-              </form>
-            </section>
-            <section class="r-i-f-like">
-              <div class="likes">Likes: </div>
-              <form class="like" action="/like" method="POST">
-                <button id="like-btn" type="submit">Like</button>
-              </form>
-            </section>
-          </section>
-        </section>
+  <section class="vr-main">
+      <%- include('./partials/_resourceById'); %>
 
-        <section class="vr-right">
-          <section class="resource-info">
-            <div class="resource-title">Resource Title</div>
-            <div class="resource-url"> { URL } display for now, anchor to title later</div>
-          </section>
-
-          <section class="resource-body">
-            <div class="resource-description-header">Description</div>
-            <p class="resource-description">
-              The man said "No, we just sell lemonade
-              But it’s cold and it's fresh, and it’s all home-made...
-            </p>
-          </section>
-
-          <section class="resource-user-info">
-            <img class="resource-user-pfp"
-              src="https://t3.ftcdn.net/jpg/01/06/13/54/360_F_106135410_hai531zdSrXxSDDuXvtbLtpslpDgb1d9.jpg">
-            <div class="resource-user-name">@duqname</div>
-          </section>
-        </section>
-      </div>
-
-      <section class="vr-comments" id="comments-container">
+      <section class="vr-comments">
         <section class="vr-comments-top">
           <div class="vr-comments-header">Comments:</div>
         </section>
-
+  
         <section class="vr-comments-bottom">
-          <form id="vr-create-comment">
-            <section class="vr-c-c-user">
-              <img class="vr-c-c-user-pfp"
-              src="https://t3.ftcdn.net/jpg/01/06/13/54/360_F_106135410_hai531zdSrXxSDDuXvtbLtpslpDgb1d9.jpg">
-            <div class="vr-c-c-user-name">@duqname</div>
-            </section>
-
+          <form id="vr-create-comment" action="/api/comments/" method="POST">
+            <input type="hidden" name="resourceId" value="<%= resourceId %>">
+  
             <section class="vr-c-c-bottom">
-            <textarea class="vr-c-c-body" placeholder="What do you have to quack about?" rows="5" maxlength="240"></textarea>
-
+            <textarea class="vr-c-c-body" placeholder="What do you have to quack about?" rows="5" maxlength="240" name="body"></textarea>
+  
             <button id="vr-c-c-btn" type="submit">Honk!</button>
             </section>
           </form>
-
-          <section class="vr-comments-box">
+  
+          <section class="vr-comments-box" id="comments-container">
             <section class="vr-comments-user">
-              <img class="comments-user-pfp" id="user-pfp"
-                src=""></img>
               <div class="comments-user-name" id="user-name">@thisDuck</div>
             </section>
 
@@ -95,6 +42,7 @@
         </section>
       </section>
     </section>
+  </section>
 
     <script>
       window.resourceId = "<%= resourceId %>";

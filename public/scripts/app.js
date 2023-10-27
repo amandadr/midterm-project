@@ -78,6 +78,7 @@ const submitResource = function (data) {
 };
 
 const submitComment = function (data) {
+  console.log(data);
   return $.ajax({
     method: "POST",
     url: "/api/comments",
@@ -116,45 +117,3 @@ const getProfile = function (id) {
       throw error;
     });
 };
-
-const getResourcesByUser = function (id) {
-  let url = `/api/users/${id}/resources`;
-  return $.ajax({
-    url,
-    dataType: "json",
-  })
-    .then((data) => {
-      const resources = data.resources;
-      return resources;
-    })
-    .catch((error) => {
-      console.error(error);
-      throw error;
-    });
-};
-
-$(() => {
-  $("#login-form").submit(function (event) {
-    event.preventDefault();
-    const formData = $(this).serialize();
-    $.post("/users/login", formData)
-      .done(function (response) {
-        console.log(response);
-      })
-      .fail(function (error) {
-        console.error(error);
-      });
-  });
-
-  $("#register-form").submit(function (event) {
-    event.preventDefault();
-    const formData = $(this).serialize();
-    $.post("/users/", formData)
-      .done(function (response) {
-        console.log("success");
-      })
-      .fail(function (error) {
-        console.error(error);
-      });
-  });
-});

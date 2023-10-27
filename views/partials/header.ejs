@@ -33,14 +33,17 @@
         window.userId = "<%= user %>"
       </script>
       <div class="nav-right-logged">
-        <a class="user-container" href="/profiles/<%= user %>">
+        <a href="/profiles/<%= user %>">
           <img id="user-pfp"></img>
-          <div id="user-name">@</div>
+          <div id="user-name"></div>
         </a>
+        <form id="logout" action="/users/logout" method="POST">
+          <button id="logout-btn" type="submit">Logout</button>
+        </form>
       </div>
       <% } else{ %>
         <div class="nav-right-unlogged">
-          <form class="login" , id="login-form" , action="/login" , method="POST">
+          <form class="login" , id="login-form" , action="/users/login" , method="POST">
             <input id="login-user" , type="text" , placeholder="email" name="email"></input>
             <input id="login-password" , type="password" , placeholder="password" name="password"></input>
             <button class="login mui-btn mui-btn--small mui-btn--primary" , id="login-btn" , type="submit">

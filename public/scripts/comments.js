@@ -2,10 +2,8 @@ const createCommentElement = function (commentsObject) {
   return Promise.all([getCommentsPoster(commentsObject.user_id)])
     .then(([name]) => {
       let $comment = $(`
-        <section class="vr-comments-bottom">
-          <section class="vr-comments-box">
             <section class="vr-comments-user">
-              <div id="user-name">${name}</div>
+              <div class="comments-user-name" id="user-name">${name}</div>
             </section>
 
             <div class="vr-comment-body">${commentsObject.body}</div>
@@ -13,6 +11,7 @@ const createCommentElement = function (commentsObject) {
             <div class="vr-comments-date">${commentsObject.created_at}</div>
           </section>
         </section>
+      </section>
       `);
 
       return $comment;
@@ -41,7 +40,7 @@ const renderComments = function (commentsArray) {
 };
 
 $(() => {
-  $("#comment-form").on("submit", function (event) {
+  $("#vr-create-comment").on("submit", function (event) {
     event.preventDefault();
     const formData = $(this).serialize();
     submitComment(formData)
