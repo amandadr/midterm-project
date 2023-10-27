@@ -102,6 +102,22 @@ const getResourceById = function (id) {
     });
 };
 
+const getResourceByTitle = function (search) {
+  let url = `/api/resources/results/${search}`;
+  return $.ajax({
+    url,
+    dataType: "json",
+  })
+    .then((data) => {
+      const resource = data.resource;
+      return resource;
+    })
+    .catch((error) => {
+      console.error(error);
+      throw error;
+    });
+};
+
 const getProfile = function (id) {
   let url = `/api/profiles/${id}`;
   return $.ajax({
