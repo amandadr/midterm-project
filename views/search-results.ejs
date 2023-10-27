@@ -2,8 +2,8 @@
 <html lang="en">
 
 <head>
-  <title>Home Page</title>
-  <%- include('./partials/head'); %>
+  <title>Search Results</title>
+  <%- include('./partials/_head'); %>
     <!-- House Sheets -->
     <link rel="stylesheet" href="/styles/resource.css" />
     <link rel="stylesheet" href="/styles/search-results.css" />
@@ -11,28 +11,15 @@
 
 <body>
   <%- include('./partials/header'); %>
-    <div class="sr-head">Your Results: (turn into: 'results for ${search input}')</div>
-    <div class="row">
-      <div class="col-lg-4">
-        <div class="box"><%- include('./partials/resource'); %></div>
-        <div class="box"><%- include('./partials/resource'); %></div>
-        <div class="box"><%- include('./partials/resource'); %></div>
-        <div class="box"><%- include('./partials/resource'); %></div>
-      </div>
-      <div class="col-lg-4">
-        <div class="box"><%- include('./partials/resource'); %></div>
-        <div class="box"><%- include('./partials/resource'); %></div>
-        <div class="box"><%- include('./partials/resource'); %></div>
-        <div class="box"><%- include('./partials/resource'); %></div>
-      </div>
-      <div class="col-lg-4">
-        <div class="box"><%- include('./partials/resource'); %></div>
-        <div class="box"><%- include('./partials/resource'); %></div>
-        <div class="box"><%- include('./partials/resource'); %></div>
-        <div class="box"><%- include('./partials/resource'); %></div>
-      </div>
-    </div>
+    <div class="sr-head">Your Results:</div>
+    <div class="box"><%- include('./partials/_resource'); %></div>
 
+
+    <script>
+      window.searchInput = "<%= search %>";
+    </script>
+    <%- include('./partials/_scripts'); %>
+    <script src="/scripts/searchResources.js"></script>
 </body>
 
 </html>

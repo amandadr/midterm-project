@@ -1,9 +1,10 @@
 @import './partial';
 
 .resources {
-  width: 100%;
+  width: 12rem;
   margin-left: 1rem;
   @include flex-column($align: center);
+  @include background_resource;
 
   .resource-img {
     margin-top: .5rem;
@@ -18,14 +19,16 @@
     @include flex-column($align: center);
     justify-content: space-between;
 
+    .resource-url {
+      font-size: small;
+    }
+    
     .resource-title {
       font-size: large;
       @include emphasize();
     }
 
-    .resource-url {
-      font-size: small;
-    }
+
 
     .resource-user-info {
       @include flex-row($justify: space-between);
@@ -34,7 +37,7 @@
       .resource-user-pfp {
         height: 2rem;
         width: 2rem;
-        margin-right: .25rem;
+        margin-left: .4rem;
       }
     }
 

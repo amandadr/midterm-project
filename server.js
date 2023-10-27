@@ -42,6 +42,8 @@ const usersRoutes = require("./routes/users");
 const resourcesApiRoutes = require("./routes/resources-api");
 const profilesRoutes = require("./routes/profiles");
 const profilesApiRoutes = require("./routes/profiles-api");
+const resourcesRoutes = require("./routes/resources");
+const commentsApiRoutes = require("./routes/comments-api");
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -50,6 +52,10 @@ app.use("/api/users", userApiRoutes);
 app.use("/api/widgets", widgetApiRoutes);
 app.use("/api/resources", resourcesApiRoutes);
 app.use("/users", usersRoutes);
+app.use("/resources", resourcesRoutes);
+app.use("/api/comments", commentsApiRoutes);
+
+const profiles = require("./db/queries/profiles");
 app.use("/profiles", profilesRoutes);
 app.use("/api/profiles", profilesApiRoutes);
 
@@ -63,12 +69,8 @@ const users = require("./db/queries/users");
 
 app.get("/", (req, res) => {
   const user = req.session.userId;
-  const userName = users.getUserWithId(user)['name'];
-  const userProfile = profiles.getProfile(user).pfp_url;
   const templateVars = {
     user,
-    userName,
-    userProfile
   };
   res.render("index", templateVars);
 });
@@ -76,12 +78,8 @@ app.get("/", (req, res) => {
 // TEMP PFP WORKAREA ///
 app.get("/userpf", (req, res) => {
   const user = req.session.userId;
-  const userDetails = users.getUserWithId(user);
-  const userProfile = profiles.getProfile(user);
   const templateVars = {
     user,
-    userDetails,
-    userProfile
   };
   res.render("profile-page", templateVars);
 });
@@ -89,12 +87,8 @@ app.get("/userpf", (req, res) => {
 // TEMP EDIT PF WORKAREA ///
 app.get("/editpf", (req, res) => {
   const user = req.session.userId;
-  const userDetails = users.getUserWithId(user);
-  const userProfile = profiles.getProfile(user);
   const templateVars = {
     user,
-    userDetails,
-    userProfile
   };
   res.render("edit-profile", templateVars);
 });
@@ -102,12 +96,8 @@ app.get("/editpf", (req, res) => {
 // TEMP VIEW RESULT WORKAREA ///
 app.get("/viewres", (req, res) => {
   const user = req.session.userId;
-  const userDetails = users.getUserWithId(user);
-  const userProfile = profiles.getProfile(user);
   const templateVars = {
     user,
-    userDetails,
-    userProfile
   };
   res.render("view-resource", templateVars);
 });
@@ -115,20 +105,17 @@ app.get("/viewres", (req, res) => {
 // TEMP SEARCH-RESULTS WORKAREA ///
 app.get("/results", (req, res) => {
   const user = req.session.userId;
-  const userDetails = users.getUserWithId(user);
-  const userProfile = profiles.getProfile(user);
   const templateVars = {
     user,
-    userDetails,
-    userProfile
   };
   res.render("search-results", templateVars);
 });
 
 // TEMP PIC REDIRECT ///
 app.get("/null", (req, res) => {
-
-  res.redirect("https://i.etsystatic.com/34711428/r/il/9c16cb/4756246624/il_fullxfull.4756246624_88x2.jpg");
+  res.redirect(
+    "https://i.etsystatic.com/34711428/r/il/9c16cb/4756246624/il_fullxfull.4756246624_88x2.jpg"
+  );
 });
 
 app.listen(PORT, () => {

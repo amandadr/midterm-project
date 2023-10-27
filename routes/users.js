@@ -7,6 +7,7 @@
 
 const express = require("express");
 const users = require("../db/queries/users");
+const profiles = require("../db/queries/profiles");
 const router = express.Router();
 
 router.get("/", (req, res) => {
@@ -30,6 +31,10 @@ router.post("/", (req, res) => {
       } else {
         res.redirect("/");
       }
+      req.session.userId = user.rows[0].id;
+      profiles.addProfile(name, user.rows[0].id);
+
+      res.redirect("/");
     })
     .catch((err) => {
       console.log(err.message);
@@ -39,25 +44,23 @@ router.post("/", (req, res) => {
 
 // LOGIN
 router.post("/login", (req, res) => {
-  const { email, password } = req.body;
-  users.getUserWithEmail(email).then((user) => {
+  const email = req.body.email.toLowerCase();
+  const password = req.body.password;
+  users.getUserWithEmail(email.toLowerCase()).then((user) => {
     if (!user) {
       return res.send({ error: "no user with that email" });
     } else if (user.password !== password) {
       return res.send({ error: "invalid password" });
     } else {
 
-      req.session.userId = user.id;
-      res.send({
-        user: {
-          name: user.name,
-          email: user.email,
-          id: user.id,
-        },
-      });
-
-    }
+    req.session.userId = user.id;
+    res.redirect(`/`);
   });
+});
+
+router.post("/logout", (req, res) => {
+  req.session.userId = null;
+  res.redirect("/");
 });
 
 module.exports = router;

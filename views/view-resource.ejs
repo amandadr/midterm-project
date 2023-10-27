@@ -2,85 +2,67 @@
 <html lang="en">
 
 <head>
-  <title>Home Page</title>
-  <%- include('./partials/head'); %>
+  <title>Resource Page</title>
+  <%- include('./partials/_head'); %>
     <!-- House Sheets -->
     <link rel="stylesheet" href="/styles/resource.css" />
     <link rel="stylesheet" href="/styles/view-resource.css" />
 </head>
 
 <body>
-  <%- include('./partials/header'); %>
+  <%- include('./partials/_header'); %>
     <section class="vr-main">
-      <div class="resources">
-        <section class="vr-left">
-          <img class="resource-img"
-            src="https://i.etsystatic.com/34711428/r/il/9c16cb/4756246624/il_fullxfull.4756246624_88x2.jpg"></img>
-          <section class="r-i-footer">
-            <div class="resource-rating">Rating</div>
-            <div class="likes">Likes</div>
+      <%- include('./partials/_resourceById'); %>
+
+        <section class="vr-comments">
+          <section class="vr-comments-top">
+            <div class="vr-comments-header">Comments:</div>
+          </section>
+
+          <section class="vr-comments-bottom">
+            <% if (user) { %>
+              <form id="vr-create-comment" action="/api/comments/" method="POST">
+                <input type="hidden" name="resourceId" value="<%= resourceId %>">
+
+                <section class="vr-c-c-bottom">
+                  <textarea class="vr-c-c-body" placeholder="What do you have to quack about?" rows="5" maxlength="240"
+                    name="body"></textarea>
+
+                  <button id="vr-c-c-btn" type="submit">Honk!</button>
+                </section>
+              </form>
+
+              <% } else if (!user) { %>
+                <section class="vr-c-c-bottom">
+                  <h2>You must be logged in to comment!</h2>
+                </section>
+                <% } %>
+
+                  <section class="vr-comments-posted">
+                    <section class="mui-container vr-comments-box" id="comments-container">
+                      <section class="vr-comments-user">
+                        <div class="comments-user-name" id="user-name">@thisDuck</div>
+                      </section>
+
+                      <div class="vr-comments-body">Quack quack quack</div>
+
+                      <div class="vr-comments-date">2023-10-26</div>
+                    </section>
+                  </section>
           </section>
         </section>
-
-        <section class="vr-right">
-          <section class="resource-info">
-            <div class="resource-title">Resource Title</div>
-            <div class="resource-url"> { URL } display for now, anchor to title later</div>
-          </section>
-
-          <section class="resource-body">
-            <div class="resource-description-header">Description</div>
-            <p class="resource-description">
-              The man said "No, we just sell lemonade
-              But it’s cold and it's fresh, and it’s all home-made...
-            </p>
-          </section>
-
-          <section class="resource-user-info">
-            <img class="resource-user-pfp"
-              src="https://t3.ftcdn.net/jpg/01/06/13/54/360_F_106135410_hai531zdSrXxSDDuXvtbLtpslpDgb1d9.jpg">
-            <div class="resource-user-name">@duqname</div>
-          </section>
-        </section>
-      </div>
-
-      <section class="vr-comments">
-        <section class="vr-comments-top">
-          <div class="vr-comments-header">Comments:</div>
-        </section>
-
-        <section class="vr-comments-bottom">
-          <form id="vr-create-comment">
-            <section class="vr-c-c-user">
-              <img class="vr-c-c-user-pfp"
-              src="https://t3.ftcdn.net/jpg/01/06/13/54/360_F_106135410_hai531zdSrXxSDDuXvtbLtpslpDgb1d9.jpg">
-            <div class="vr-c-c-user-name">@duqname</div>
-            </section>
-
-            <section class="vr-c-c-bottom">
-            <textarea class="vr-c-c-body" placeholder="What do you have to quack about?" rows="5" maxlength="240"></textarea>
-
-            <button id="vr-c-c-btn" type="submit">Honk!</button>
-            </section>
-          </form>
-
-          <section class="vr-comments-box">
-            <section class="vr-comments-user">
-              <img class="comments-user-pfp"
-                src="https://t3.ftcdn.net/jpg/01/06/13/54/360_F_106135410_hai531zdSrXxSDDuXvtbLtpslpDgb1d9.jpg"></img>
-              <div class="comments-user-name">@thisDuck</div>
-            </section>
-
-            <div class="vr-comments-body">Quack quack quack</div>
-
-            <div class="vr-comments-date">2023-10-26</div>
-          </section>
-        </section>
-      </section>
     </section>
-    <script src="/vendor/jquery-3.0.0.js"></script>
-    <script src="/scripts/app.js"></script>
-    <script src="/scripts/resources.js"></script>
+    </section>
+
+    <script>
+      window.resourceId = "<%= resourceId %>";
+      window.userId = "<%= user %>";
+      window.liked = "<%= userLikedResource ? 'true' : 'false' %>";
+    </script>
+    <%- include('./partials/_scripts'); %>
+    <script src="/scripts/resourceById.js"></script>
+    <script src="/scripts/comments.js"></script>
+    <script src="/scripts/lieksRatings.js"></script>
 </body>
 
 </html>

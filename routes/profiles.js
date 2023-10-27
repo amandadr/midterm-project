@@ -10,7 +10,13 @@ router.get("/", (req, res) => {
 });
 
 router.get("/:id", (req, res) => {
-  res.render("profile-page");
+  const user = req.session.userId;
+  const profile = req.params.id;
+  const templateVars = {
+    user,
+    profile,
+  };
+  res.render("profile-page", templateVars);
 });
 
 module.exports = router;

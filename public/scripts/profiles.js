@@ -1,26 +1,17 @@
 const createResourceElement = function (resourcesObject) {
   return Promise.all([
-    getResourcePoster(resourcesObject.user_id),
     getResourceRating(resourcesObject.id),
     getResourceLikes(resourcesObject.id),
-    getProfile(resourcesObject.user_id),
   ])
-    .then(([name, rating, likes, profile]) => {
+    .then(([rating, likes]) => {
       let $resource = $(`
-    <div class="resources-container">
-        <div class="mui-container resources">
+        <div class="resources-container">
+        <div class="resources">
           <a href="/resources/${resourcesObject.id}"><img class="resource-img" src="${resourcesObject.img_url}"></img></a>
           <section class="resource-info">
-            <div class="resource-title-head">
-            <a class="resource-title" href="${resourcesObject.url}">${resourcesObject.title}</a>
+            <div class="resource-title">
+            <a class="resource-url" href="${resourcesObject.url}">${resourcesObject.title}</a>
             </div>
-
-            <section class="resource-user-info">
-            <a href="/profiles/${resourcesObject.user_id}">
-              <img class="resource-user-pfp" src="${profile[0].pfp_url}"></img>
-              <div class="resource-user-name">${name}</div>
-            </a>
-            </section>
 
             <p class="resource-description">${resourcesObject.description}</p>
 
@@ -72,7 +63,7 @@ $(() => {
   });
 
   const loadResources = function () {
-    $.get("/api/resources")
+    $.get(`/api/users/${window.userId}/resources`)
       .done((resources) => {
         renderResources(resources.resources);
       })

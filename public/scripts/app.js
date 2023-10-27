@@ -21,6 +21,22 @@ function getResourcePoster(id) {
     });
 }
 
+function getCommentsPoster(id) {
+  let url = `/api/comments/poster/${id}`;
+  return $.ajax({
+    url,
+    dataType: "json",
+  })
+    .then((data) => {
+      const name = data.poster.name;
+      return name;
+    })
+    .catch((error) => {
+      console.error(error);
+      throw error;
+    });
+}
+
 function getResourceRating(id) {
   let url = `/api/resources/rating/${id}`;
   return $.ajax({
@@ -61,6 +77,14 @@ const submitResource = function (data) {
   });
 };
 
+const submitComment = function (data) {
+  return $.ajax({
+    method: "POST",
+    url: "/api/comments",
+    data,
+  });
+};
+
 const getResourceById = function (id) {
   let url = `/api/resources/${id}`;
   return $.ajax({
@@ -77,28 +101,82 @@ const getResourceById = function (id) {
     });
 };
 
-$(() => {
-  $("#login-form").submit(function (event) {
-    event.preventDefault();
-    const formData = $(this).serialize();
-    $.post("/users/login", formData)
-      .done(function (response) {
-        console.log(response);
-      })
-      .fail(function (error) {
-        console.error(error);
-      });
-  });
+const getResourceByTitle = function (search) {
+  let url = `/api/resources/results/${search}`;
+  return $.ajax({
+    url,
+    dataType: "json",
+  })
+    .then((data) => {
+      const resource = data.resource;
+      return resource;
+    })
+    .catch((error) => {
+      console.error(error);
+      throw error;
+    });
+};
 
-  $("#register-form").submit(function (event) {
+const getProfile = function (id) {
+  let url = `/api/profiles/${id}`;
+  return $.ajax({
+    url,
+    dataType: "json",
+  })
+    .then((data) => {
+      const profile = data.profile;
+      return profile;
+    })
+    .catch((error) => {
+      console.error(error);
+      throw error;
+    });
+};
+
+const getResourcesBySearch = function (search) {
+  let url = `/api/resources/search/${search}`;
+  return $.ajax({
+    url,
+    dataType: "json",
+  })
+    .then((data) => {
+      const resources = data.resources;
+      return resources;
+    })
+    .catch((error) => {
+      console.error(error);
+      throw error;
+    });
+};
+
+const submitLike = function (id, data) {
+  return $.ajax({
+    method: "POST",
+    url: `/resources/${id}/like`,
+    data,
+  });
+};
+
+const submitUnlike = function (id, data) {
+  return $.ajax({
+    method: "POST",
+    url: `/resources/${id}/unlike`,
+    data,
+  });
+};
+
+const submitRating = function (id, data) {
+  return $.ajax({
+    method: "POST",
+    url: `/resources/${id}/rate`,
+    data,
+  });
+};
+
+$(() => {
+  $("#search-form").on("submit", function (event) {
     event.preventDefault();
-    const formData = $(this).serialize();
-    $.post("/users/", formData)
-      .done(function (response) {
-        console.log("success");
-      })
-      .fail(function (error) {
-        console.error(error);
-      });
+    const search = $("#search-text").val();
+    window.location.href = `/resources/search/${search}`;
   });
 });

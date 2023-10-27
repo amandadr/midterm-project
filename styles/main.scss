@@ -6,6 +6,11 @@
 	font-family: $font-family_main;
 }
 
+a:hover, a:visited, a:link, a:active {
+  text-decoration: none;
+  color: black;
+}
+
 body {
   display: flex;
   flex-direction: column;
@@ -13,14 +18,5 @@ body {
   align-items: center;
   min-height: 100vh;
 
-  background: rgb(163, 208, 219);
-  background: linear-gradient(
-    227deg,
-    rgba(163, 208, 219, 1) 0%,
-    rgba(163, 176, 219, 1) 20%,
-    rgba(163, 173, 219, 1) 34%,
-    rgba(163, 219, 208, 1) 59%,
-    rgba(163, 208, 219, 1) 74%,
-    rgba(163, 208, 219, 1) 100%
-  );
+  @include background_main;
 }

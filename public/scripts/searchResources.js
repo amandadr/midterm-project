@@ -11,8 +11,8 @@ const createResourceElement = function (resourcesObject) {
         <div class="mui-container resources">
           <a href="/resources/${resourcesObject.id}"><img class="resource-img" src="${resourcesObject.img_url}"></img></a>
           <section class="resource-info">
-            <div class="resource-title-head">
-            <a class="resource-title" href="${resourcesObject.url}">${resourcesObject.title}</a>
+            <div class="resource-title">
+            <a class="resource-url" href="${resourcesObject.url}">${resourcesObject.title}</a>
             </div>
 
             <section class="resource-user-info">
@@ -72,8 +72,9 @@ $(() => {
   });
 
   const loadResources = function () {
-    $.get("/api/resources")
+    $.get(`/api/resources/search/${window.searchInput}`)
       .done((resources) => {
+        console.log(resources);
         renderResources(resources.resources);
       })
       .fail((error) => {

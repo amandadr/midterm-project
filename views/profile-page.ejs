@@ -2,15 +2,18 @@
 <html lang="en">
 
 <head>
-  <title>Home Page</title>
-  <%- include('./partials/head'); %>
+  <title>Profile Page</title>
+  <%- include('./partials/_head'); %>
     <!-- House Sheets -->
     <link rel="stylesheet" href="/styles/resource.css" />
     <link rel="stylesheet" href="/styles/profile-page.css" />
 </head>
 
 <body>
-  <%- include('./partials/header'); %>
+  <%- include('./partials/_header'); %>
+  <script>
+    window.profileId = "<%= profile %>";
+  </script>
     <section class="pp-main">
       <section class="pp-left">
         <section class="pp-user-info">
@@ -20,6 +23,9 @@
             <div class="pp-user-display">Devvy Duq</div>
             <div class="pp-user-pronouns">quack/honk</div>
             <div class="pp-user-name">@duqname</div>
+            <form id="edit-pf" action="/users/:id/edit" method="post">
+              <button class="mui-btn mui-btn--small mui-btn--primary" id="edit-pf-btn" type="submit">Edit Profile</button>
+            </form>
           </section>
         </section>
 
@@ -67,8 +73,8 @@
           </section>
 
           <section class="cq-bottom">
-            <textarea class="cq-description" placeholder="Description" id="description" name="description" rows="4" maxlength="150" required></textarea>
-            <button class="cq-btn" id="post-resource" type="submit">Quack!</button>
+            <textarea class="cq-description" placeholder="Description" id="description" name="description" rows="4" maxlength="50" required></textarea>
+            <button class="mui-btn mui-btn--small mui-btn--primary cq-btn" id="post-resource" type="submit">Quack!</button>
           </section>
         </form>
       </section>
@@ -82,21 +88,28 @@
               <option value="all">All</option>
               <option value="liked">Liked</option>
               <option value="favourites">Favourites</option>
-              <option value="pond">Pond</option>
-              <option value="puddle">Puddle</option>
+              <option value="tools">Tools</option>
+              <option value="reference">Reference</option>
+              <option value="packages">Packages</option>
+              <option value="scripts">Scripts</option>
+              <option value="styles">Styles</option>
+              <option value="read-later">Read Later</option>
+              <option value="etc">Etc.</option>
             </select>
           </section>
         </section>
 
         <section class="pp-right-bottom">
-          <div class="box"><%- include('./partials/resource'); %></div>
+          <div class="box"><%- include('./partials/_resource'); %></div>
         </section>
       </section>
     </section>
 
-    <script src="/vendor/jquery-3.0.0.js"></script>
-    <script src="/scripts/app.js"></script>
-    <script src="/scripts/resources.js"></script>
+    <script>
+      window.profileId = "<%= profile %>";
+    </script>
+    <%- include('./partials/_scripts'); %>
+    <script src="/scripts/profiles.js"></script>
 </body>
 
 </html>
