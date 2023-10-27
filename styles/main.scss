@@ -6,6 +6,11 @@
 	font-family: $font-family_main;
 }
 
+a:hover, a:visited, a:link, a:active {
+  text-decoration: none;
+  color: black;
+}
+
 body {
   display: flex;
   flex-direction: column;
