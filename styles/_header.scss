@@ -61,7 +61,7 @@ nav {
           margin: .1rem;
         }
 
-        #login-btn, #register-btn {
+        #login-btn, #register-btn, #logout-btn {
           @include button_primary;
         }
       }

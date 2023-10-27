@@ -52,6 +52,6 @@ $border: .2rem solid $color_border;
 @mixin button_primary() {
   @include flex-column($align: center);
   justify-content: center;
-  fill: $color_primary;
+  background-color: $color_primary;
   font-size: small;
 }

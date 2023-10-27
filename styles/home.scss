@@ -9,7 +9,10 @@
 }
 
 .mui-container {
-  
   border: $color_border solid .1rem;
   border-radius: 1rem;
+}
+
+.resources:hover {
+  box-shadow: 0.4rem .25rem $background_blue;
 }

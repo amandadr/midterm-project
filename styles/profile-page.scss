@@ -133,6 +133,7 @@
 
         .cq-btn {
           height: 50%;
+          @include button_primary;
         }
       }
     }
@@ -154,14 +155,14 @@
     }
 
     .pp-right-bottom {
+      width: 100%;
       padding-inline: .5rem;
 
       .resources-container {
-        border: .2rem solid rgba(255, 235, 205, 0.66);
         width: 100%;
         padding: .2rem;
         display: inline-grid;
-        grid-template-columns: repeat(4, auto);
+        grid-template-columns: repeat(3, auto);
         grid-gap: .5rem;
 
         .resources {
@@ -172,6 +173,10 @@
           .resource-description {
             display: none;
           }
+        }
+
+        .resources:hover {
+          box-shadow: 0.4rem .25rem $background_blue;
         }
       }
     }
