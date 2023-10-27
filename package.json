@@ -1,7 +1,7 @@
 {
-  "name": "node-skeleton",
+  "name": "DDQ",
   "version": "1.0.0",
-  "description": "",
+  "description": "A resource wall posting app where users can save and interact with the resources.",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -11,7 +11,7 @@
     "sass-watch": "sass styles:public/styles --watch --poll --no-source-map",
     "babel-version": "babel --version"
   },
-  "author": "Lighthouse Labs",
+  "author": "Amanda roy and John Paul Saliba",
   "license": "ISC",
   "dependencies": {
     "@fontsource/roboto": "^5.0.8",
