@@ -50,14 +50,13 @@ router.post("/login", (req, res) => {
     }
 
     req.session.userId = user.id;
-    res.send({
-      user: {
-        name: user.name,
-        email: user.email,
-        id: user.id,
-      },
-    });
+    res.redirect(`/`);
   });
+});
+
+router.post("/logout", (req, res) => {
+  req.session.userId = null;
+  res.redirect("/");
 });
 
 module.exports = router;

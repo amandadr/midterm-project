@@ -8,6 +8,7 @@ router.get("/:id", (req, res) => {
   console.log(resourceId);
   const user = req.session.userId;
   const userProfile = profiles.getProfile(user);
+  console.log(user);
   const templateVars = {
     user,
     userProfile,

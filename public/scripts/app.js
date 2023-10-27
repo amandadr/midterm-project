@@ -116,29 +116,3 @@ const getProfile = function (id) {
       throw error;
     });
 };
-
-$(() => {
-  $("#login-form").submit(function (event) {
-    event.preventDefault();
-    const formData = $(this).serialize();
-    $.post("/users/login", formData)
-      .done(function (response) {
-        console.log(response);
-      })
-      .fail(function (error) {
-        console.error(error);
-      });
-  });
-
-  $("#register-form").submit(function (event) {
-    event.preventDefault();
-    const formData = $(this).serialize();
-    $.post("/users/", formData)
-      .done(function (response) {
-        console.log("success");
-      })
-      .fail(function (error) {
-        console.error(error);
-      });
-  });
-});
