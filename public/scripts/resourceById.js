@@ -78,6 +78,15 @@ const renderResources = function (resourcesArray) {
 };
 
 $(() => {
+  console.log(window.liked);
+  if (window.liked) {
+    $("#like-btn").text("Unlike");
+    $("#like-resource").attr("id", "unlike-resource");
+  } else {
+    $("#like-btn").text("Like");
+    $("#unlike-resource").attr("id", "like-resource");
+  }
+
   $("#resources").on("submit", function (event) {
     event.preventDefault();
     const formData = $(this).serialize();
@@ -96,6 +105,10 @@ $(() => {
     submitLike(window.resourceId, window.userId, formData)
       .then(() => {
         console.log("success");
+        window.liked = true;
+        $("#like-btn").text("Unlike");
+        $("#like-resource").attr("id", "unlike-resource");
+        location.reload();
       })
       .catch((error) => {
         console.error(error);
@@ -108,6 +121,10 @@ $(() => {
     submitUnlike(window.resourceId, formData)
       .then(() => {
         console.log("success");
+        window.liked = false;
+        $("#like-btn").text("Like");
+        $("#unlike-resource").attr("id", "like-resource");
+        location.reload();
       })
       .catch((error) => {
         console.error(error);
@@ -121,7 +138,6 @@ $(() => {
     submitRating(window.resourceId, formData)
       .then(() => {
         console.log("success");
-        location.reload();
       })
       .catch((error) => {
         console.error(error);

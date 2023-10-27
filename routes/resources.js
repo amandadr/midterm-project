@@ -5,16 +5,19 @@ const resourceQueries = require("../db/queries/resources");
 
 router.get("/:id", (req, res) => {
   const resourceId = req.params.id;
-  console.log(resourceId);
   const user = req.session.userId;
   const userProfile = profiles.getProfile(user);
-  console.log(user);
-  const templateVars = {
-    user,
-    userProfile,
-    resourceId,
-  };
-  res.render("view-resource", templateVars);
+  resourceQueries.getResourceLikedByUser(resourceId, user).then((result) => {
+    const userLikedResource = result ? true : false;
+    console.log(userLikedResource);
+    let templateVars = {
+      user,
+      userProfile,
+      resourceId,
+      userLikedResource,
+    };
+    res.render("view-resource", templateVars);
+  });
 });
 
 router.post("/:id/like", (req, res) => {
