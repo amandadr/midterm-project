@@ -7,28 +7,85 @@ const createResourceElement = function (resourcesObject) {
   ])
     .then(([name, rating, likes, profile]) => {
       let $resource = $(`
-        <div class="resources-container">
-        <div class="resources">
-          <a href="/resources/${resourcesObject.id}"><img class="resource-img" src="${resourcesObject.img_url}"></img></a>
-          <section class="resource-info">
-            <div class="resource-title">
-            <a class="resource-url" href="${resourcesObject.url}">${resourcesObject.title}</a>
-            </div>
-
-            <section class="resource-user-info">
-              <img class="resource-user-pfp" src="${profile[0].pfp_url}"></img>
-              <div class="resource-user-name">${name}</div>
-            </section>
-
-            <p class="resource-description">${resourcesObject.description}</p>
-
-            <section class="r-i-footer">
+      <section class="vr-main">
+      <div class="resources">
+        <section class="vr-left">
+        <a href="/resources/${resourcesObject.id}"><img class="resource-img" src="${resourcesObject.img_url}"></img></a>
+          <section class="r-i-footer">
+            <section class="r-i-f-rate">
               <div class="resource-rating">Rating: ${rating}⭐</div>
+              <form class="rate" action="/rate" method="POST">
+                <select id="rate-menu" >
+                <option value="1">1⭐</option>
+                <option value="2">2⭐</option>
+                <option value="3">3⭐</option>
+                <option value="4">4⭐</option>
+                <option value="5">5⭐</option>
+              </select>
+              <button id="rate-btn" type="submit">Rate</button>
+              </form>
+            </section>
+            <section class="r-i-f-like">
               <div class="likes">Likes: ${likes}</div>
+              <form class="like" action="/like" method="POST">
+                <button id="like-btn" type="submit">Like</button>
+              </form>
             </section>
           </section>
-          </div>
-        </div>
+        </section>
+
+        <section class="vr-right">
+          <section class="resource-info">
+            <div class="resource-title">Resource Title</div>
+            <a class="resource-url" href="${resourcesObject.url}">${resourcesObject.title}</a>
+          </section>
+
+          <section class="resource-body">
+            <div class="resource-description-header">Description</div>
+            <p class="resource-description">${resourcesObject.description}</p>
+          </section>
+
+          <section class="resource-user-info">
+          <img class="resource-user-pfp" src="${profile[0].pfp_url}"></img>
+          <div class="resource-user-name">${name}</div>
+          </section>
+        </section>
+      </div>
+
+      <section class="vr-comments" id="comments-container">
+        <section class="vr-comments-top">
+          <div class="vr-comments-header">Comments:</div>
+        </section>
+
+        <section class="vr-comments-bottom">
+          <form id="vr-create-comment">
+            <section class="vr-c-c-user">
+              <img class="vr-c-c-user-pfp"
+              src="https://t3.ftcdn.net/jpg/01/06/13/54/360_F_106135410_hai531zdSrXxSDDuXvtbLtpslpDgb1d9.jpg">
+            <div class="vr-c-c-user-name">@duqname</div>
+            </section>
+
+            <section class="vr-c-c-bottom">
+            <textarea class="vr-c-c-body" placeholder="What do you have to quack about?" rows="5" maxlength="240"></textarea>
+
+            <button id="vr-c-c-btn" type="submit">Honk!</button>
+            </section>
+          </form>
+
+          <section class="vr-comments-box">
+            <section class="vr-comments-user">
+              <img class="comments-user-pfp" id="user-pfp"
+                src=""></img>
+              <div class="comments-user-name" id="user-name">@thisDuck</div>
+            </section>
+
+            <div class="vr-comments-body">Quack quack quack</div>
+
+            <div class="vr-comments-date">2023-10-26</div>
+          </section>
+        </section>
+      </section>
+    </section>
       `);
 
       return $resource;
@@ -40,7 +97,7 @@ const createResourceElement = function (resourcesObject) {
 };
 
 const renderResources = function (resourcesArray) {
-  const $resourcesContainer = $(".resources-container");
+  const $resourcesContainer = $(".vr-main");
   $resourcesContainer.empty();
 
   const resourcePromises = resourcesArray.map((resource) =>

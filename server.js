@@ -66,7 +66,10 @@ app.use("/api/profiles", profilesApiRoutes);
 
 app.get("/", (req, res) => {
   const user = req.session.userId;
-  res.render("index");
+  const templateVars = {
+    user
+  }
+  res.render("index", templateVars);
 });
 
 app.get("/post", (req, res) => {
@@ -76,25 +79,37 @@ app.get("/post", (req, res) => {
 // TEMP PFP WORKAREA ///
 app.get("/userpf", (req, res) => {
   const user = req.session.userId;
-  res.render("profile-page");
+  const templateVars = {
+    user
+  }
+  res.render("profile-page", templateVars);
 });
 
 // TEMP EDIT PF WORKAREA ///
 app.get("/editpf", (req, res) => {
   const user = req.session.userId;
-  res.render("edit-profile");
+  const templateVars = {
+    user
+  }
+  res.render("edit-profile", templateVars);
 });
 
 // TEMP VIEW RESULT WORKAREA ///
 app.get("/viewres", (req, res) => {
   const user = req.session.userId;
-  res.render("view-resource");
+  const templateVars = {
+    user
+  }
+  res.render("view-resource", templateVars);
 });
 
 // TEMP SEARCH-RESULTS WORKAREA ///
 app.get("/results", (req, res) => {
   const user = req.session.userId;
-  res.render("search-results");
+  const templateVars = {
+    user
+  }
+  res.render("search-results", templateVars);
 });
 
 // TEMP PIC REDIRECT ///

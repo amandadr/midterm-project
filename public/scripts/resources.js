@@ -7,7 +7,7 @@ const createResourceElement = function (resourcesObject) {
   ])
     .then(([name, rating, likes, profile]) => {
       let $resource = $(`
-        <div class="resources-container">
+    <div class="resources-container">
         <div class="resources">
           <a href="/resources/${resourcesObject.id}"><img class="resource-img" src="${resourcesObject.img_url}"></img></a>
           <section class="resource-info">
