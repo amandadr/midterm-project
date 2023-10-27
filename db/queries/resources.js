@@ -74,7 +74,7 @@ const getCommentsPoster = (commentId) => {
 
 const addComment = (comment, resourceId, userId) => {
   const query = {
-    text: "INSERT INTO comments(comment, resource_id, user_id) VALUES($1, $2, $3) RETURNING *",
+    text: "INSERT INTO comments(body, resource_id, user_id) VALUES($1, $2, $3) RETURNING *",
     values: [comment, resourceId, userId],
   };
   return db.query(query).then((res) => res.rows[0]);

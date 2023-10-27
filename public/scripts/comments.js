@@ -40,7 +40,7 @@ const renderComments = function (commentsArray) {
 };
 
 $(() => {
-  $("#comment-form").on("submit", function (event) {
+  $("#vr-create-comment").on("submit", function (event) {
     event.preventDefault();
     const formData = $(this).serialize();
     submitComment(formData)
