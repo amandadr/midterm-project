@@ -41,7 +41,7 @@ const updateProfilePic = (id, data) => {
 
 const updateDisplayName = (id, data) => {
   const queryString = `UPDATE profiles SET display_name = $1 WHERE user_id = $2`;
-  const queryParams = [data.avatar, id];
+  const queryParams = [data.name, id];
   return db.query(queryString, queryParams).then((data) => {
     return data.rows;
   });
@@ -49,7 +49,7 @@ const updateDisplayName = (id, data) => {
 
 const updatePronouns = (id, data) => {
   const queryString = `UPDATE profiles SET pronouns = $1 WHERE user_id = $2`;
-  const queryParams = [data.avatar, id];
+  const queryParams = [data.pronouns, id];
   return db.query(queryString, queryParams).then((data) => {
     return data.rows;
   });
@@ -57,7 +57,7 @@ const updatePronouns = (id, data) => {
 
 const updateBio = (id, data) => {
   const queryString = `UPDATE profiles SET bio = $1 WHERE user_id = $2`;
-  const queryParams = [data.avatar, id];
+  const queryParams = [data.bio, id];
   return db.query(queryString, queryParams).then((data) => {
     return data.rows;
   });
