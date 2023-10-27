@@ -3,14 +3,14 @@
 
 <head>
   <title>Resource Page</title>
-  <%- include('./partials/head'); %>
+  <%- include('./partials/_head'); %>
     <!-- House Sheets -->
     <link rel="stylesheet" href="/styles/resource.css" />
     <link rel="stylesheet" href="/styles/view-resource.css" />
 </head>
 
 <body>
-  <%- include('./partials/header'); %>
+  <%- include('./partials/_header'); %>
     <section class="vr-main">
       <%- include('./partials/_resourceById'); %>
 
@@ -31,7 +31,7 @@
                   <button id="vr-c-c-btn" type="submit">Honk!</button>
                 </section>
               </form>
-              
+
               <% } else if (!user) { %>
                 <section class="vr-c-c-bottom">
                   <h2>You must be logged in to comment!</h2>
@@ -59,8 +59,7 @@
       window.userId = "<%= user %>";
       window.liked = "<%= userLikedResource ? 'true' : 'false' %>";
     </script>
-    <script src="/vendor/jquery-3.0.0.js"></script>
-    <script src="/scripts/app.js"></script>
+    <%- include('./partials/_scripts'); %>
     <script src="/scripts/resourceById.js"></script>
     <script src="/scripts/comments.js"></script>
     <script src="/scripts/lieksRatings.js"></script>

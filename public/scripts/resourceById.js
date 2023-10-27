@@ -34,8 +34,8 @@ const createResourceElement = function (resourcesObject) {
 
         <section class="vr-right">
           <section class="resource-info">
-            <div class="resource-title">Resource Title</div>
-            <a class="resource-url" href="${resourcesObject.url}">${resourcesObject.title}</a>
+            <div class="resource-title">${resourcesObject.title}</div>
+            <a class="resource-url" href="${resourcesObject.url}">${resourcesObject.url}</a>
           </section>
 
           <section class="resource-body">

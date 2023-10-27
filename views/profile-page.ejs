@@ -3,14 +3,14 @@
 
 <head>
   <title>Profile Page</title>
-  <%- include('./partials/head'); %>
+  <%- include('./partials/_head'); %>
     <!-- House Sheets -->
     <link rel="stylesheet" href="/styles/resource.css" />
     <link rel="stylesheet" href="/styles/profile-page.css" />
 </head>
 
 <body>
-  <%- include('./partials/header'); %>
+  <%- include('./partials/_header'); %>
   <script>
     window.profileId = "<%= profile %>";
   </script>
@@ -95,7 +95,7 @@
         </section>
 
         <section class="pp-right-bottom">
-          <div class="box"><%- include('./partials/resource'); %></div>
+          <div class="box"><%- include('./partials/_resource'); %></div>
         </section>
       </section>
     </section>
@@ -103,8 +103,7 @@
     <script>
       window.profileId = "<%= profile %>";
     </script>
-    <script src="/vendor/jquery-3.0.0.js"></script>
-    <script src="/scripts/app.js"></script>
+    <%- include('./partials/_scripts'); %>
     <script src="/scripts/profile.js"></script>
 </body>
 

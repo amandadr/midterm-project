@@ -3,14 +3,14 @@
 
 <head>
   <title>Edit Profile</title>
-  <%- include('./partials/head'); %>
+  <%- include('./partials/_head'); %>
     <!-- House Sheets -->
     <link rel="stylesheet" href="/styles/resource.css" />
     <link rel="stylesheet" href="/styles/edit-profile.css" />
 </head>
 
 <body>
-  <%- include('./partials/header'); %>
+  <%- include('./partials/_header'); %>
     <section class="ep-top">
       <section class="ep-img">
         <img class="ep-pfp"
@@ -63,6 +63,8 @@
       </section>
     </section>
 
+    <%- include('./partials/_scripts'); %>
+    <script src="/scripts/profile.js"></script>
 </body>
 
 </html>

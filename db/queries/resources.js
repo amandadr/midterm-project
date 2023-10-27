@@ -56,10 +56,6 @@ const getResourceById = (id) => {
     .then((data) => data.rows[0]);
 };
 
-const getResourceByTitle = (search) => {
-  return db.query(`SELECT * FROM resources WHERE title LIKE '%${search}%'`)
-}
-
 const getAllComments = () => {
   return db.query(`SELECT * FROM comments;`).then((data) => data.rows);
 };

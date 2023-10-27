@@ -3,18 +3,17 @@
 
 <head>
   <title>Home Page</title>
-  <%- include('./partials/head'); %>
+  <%- include('./partials/_head'); %>
     <!-- House Sheets -->
     <link rel="stylesheet" href="/styles/resource.css" />
     <link rel="stylesheet" href="/styles/home.css" />
 </head>
 
 <body>
-  <%- include('./partials/header'); %>
-    <div class="box"><%- include('./partials/resource'); %></div>
+  <%- include('./partials/_header'); %>
+    <div class="box"><%- include('./partials/_resource'); %></div>
 
-    <script src="/vendor/jquery-3.0.0.js"></script>
-    <script src="/scripts/app.js"></script>
+    <%- include('./partials/_scripts'); %>
     <script src="/scripts/resources.js"></script>
 </body>
 
