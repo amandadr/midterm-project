@@ -14,7 +14,10 @@ const getResourcePoster = (resourceId) => {
 
 const getResourceLikes = (resourceId) => {
   return db
-    .query(`SELECT COUNT(*) FROM likes WHERE resource_id = $1;`, [resourceId])
+    .query(
+      `SELECT COUNT(DISTINCT user_id) FROM likes WHERE resource_id = $1;`,
+      [resourceId]
+    )
     .then((data) => data.rows[0].count);
 };
 

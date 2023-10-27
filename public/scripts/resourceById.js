@@ -141,6 +141,7 @@ $(() => {
         location.reload();
       })
       .catch((error) => {
+        alert("You have already rated this resource");
         console.error(error);
       });
   });
