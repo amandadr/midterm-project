@@ -56,6 +56,30 @@ const getResourceById = (id) => {
     .then((data) => data.rows[0]);
 };
 
+const getAllComments = () => {
+  return db.query(`SELECT * FROM comments;`).then((data) => data.rows);
+};
+
+const getResourceComments = (resourceId) => {
+  return db
+    .query(`SELECT * FROM comments WHERE resource_id = $1;`, [resourceId])
+    .then((data) => data.rows);
+};
+
+const getCommentsPoster = (commentId) => {
+  return db
+    .query(`SELECT name FROM users WHERE id = $1;`, [commentId])
+    .then((data) => data.rows[0]);
+};
+
+const addComment = (comment, resourceId, userId) => {
+  const query = {
+    text: "INSERT INTO comments(comment, resource_id, user_id) VALUES($1, $2, $3) RETURNING *",
+    values: [comment, resourceId, userId],
+  };
+  return db.query(query).then((res) => res.rows[0]);
+};
+
 module.exports = {
   getResources,
   getResourcePoster,
@@ -65,4 +89,8 @@ module.exports = {
   getLikedResources,
   getResourcesByUser,
   getResourceById,
+  getAllComments,
+  getResourceComments,
+  getCommentsPoster,
+  addComment,
 };

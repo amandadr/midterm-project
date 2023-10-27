@@ -7,6 +7,7 @@
 
 const express = require("express");
 const users = require("../db/queries/users");
+const profiles = require("../db/queries/profiles");
 const router = express.Router();
 
 router.get("/", (req, res) => {
@@ -26,6 +27,8 @@ router.post("/", (req, res) => {
       if (!user) {
         return res.send({ error: "error" });
       }
+      req.session.userId = user.rows[0].id;
+      profiles.addProfile(name, user.rows[0].id);
 
       res.redirect("/");
     })
@@ -36,8 +39,9 @@ router.post("/", (req, res) => {
 });
 
 router.post("/login", (req, res) => {
-  const { email, password } = req.body;
-  users.getUserWithEmail(email).then((user) => {
+  const email = req.body.email.toLowerCase();
+  const password = req.body.password;
+  users.getUserWithEmail(email.toLowerCase()).then((user) => {
     if (!user) {
       return res.send({ error: "no user with that email" });
     }

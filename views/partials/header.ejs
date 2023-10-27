@@ -4,9 +4,11 @@
 <nav>
   <span class="nav">
     <div class="nav-left">
-      <img id="logo"
-        src="https://i.etsystatic.com/34711428/r/il/9c16cb/4756246624/il_fullxfull.4756246624_88x2.jpg"></img>
-
+      <a href="/">
+        <img id="logo"
+        src="https://i.etsystatic.com/34711428/r/il/9c16cb/4756246624/il_fullxfull.4756246624_88x2.jpg">
+        </img>
+      </a>
       <form class="searchbar" , id="search-form" , action="/search:searchInput" , method="POST">
         <input id="search-text" placeholder="Looking for a Quack?"></input>
         <button class="searchbar" , id="search-btn" , type="submit">
@@ -16,10 +18,13 @@
     </div>
 
     <% if(user){ %>
+      <script>
+        window.userId = "<%= user %>"
+      </script>
       <div class="nav-right-logged">
         <img id="user-pfp"
           src="https://t3.ftcdn.net/jpg/01/06/13/54/360_F_106135410_hai531zdSrXxSDDuXvtbLtpslpDgb1d9.jpg"></img>
-        <div id="user-name">@thisDuck</div>
+        <div id="user-name">@</div>
       </div>
       <% } else{ %>
         <div class="nav-right-unlogged">
@@ -43,3 +48,5 @@
         <% } %>
   </span>
 </nav>
+
+<script src="/scripts/header.js"></script>
