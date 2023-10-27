@@ -20,6 +20,27 @@ router.get("/:id", (req, res) => {
   });
 });
 
+router.get("/search/:q", (req, res) => {
+  const search = req.params.q;
+  const user = req.session.userId;
+  const userProfile = profiles.getProfile(user);
+  resourceQueries
+    .getResourcesBySearch(search)
+    .then((resources) => {
+      let templateVars = {
+        user,
+        userProfile,
+        resources,
+      };
+      console.log(resources);
+      res.render("search-results", templateVars);
+    })
+    .catch((err) => {
+      res.status(500).json({ error: err.message });
+      console.log(err.message);
+    });
+});
+
 router.post("/:id/like", (req, res) => {
   const resourceId = req.params.id;
   const userId = req.session.userId;

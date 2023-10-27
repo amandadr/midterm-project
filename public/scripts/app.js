@@ -117,6 +117,22 @@ const getProfile = function (id) {
     });
 };
 
+const getResourcesBySearch = function (search) {
+  let url = `/api/resources/search/${search}`;
+  return $.ajax({
+    url,
+    dataType: "json",
+  })
+    .then((data) => {
+      const resources = data.resources;
+      return resources;
+    })
+    .catch((error) => {
+      console.error(error);
+      throw error;
+    });
+};
+
 const submitLike = function (id, data) {
   return $.ajax({
     method: "POST",

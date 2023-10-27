@@ -122,6 +122,15 @@ const getResourceLikedByUser = (resourceId, userId) => {
     .then((data) => data.rows[0]);
 };
 
+const getResourcesBySearch = (search) => {
+  return db
+    .query(
+      `SELECT * FROM resources WHERE title ILIKE $1 OR description ILIKE $1;`,
+      [`%${search}%`]
+    )
+    .then((data) => data.rows);
+};
+
 module.exports = {
   getResources,
   getResourcePoster,
@@ -140,4 +149,5 @@ module.exports = {
   rateResource,
   resourceRatedByUser,
   getResourceLikedByUser,
+  getResourcesBySearch,
 };
