@@ -17,4 +17,19 @@ router.get("/:id", (req, res) => {
   res.render("view-resource", templateVars);
 });
 
+router.post("/:id/ratings", (req, res) => {
+  const rating = req.body.rating;
+  const resourceId = req.params.id;
+  const userId = req.session.userId;
+  resourceQueries
+    .addRating(rating, resourceId, userId)
+    .then((rating) => {
+      res.json({ rating });
+    })
+    .catch((err) => {
+      res.status(500).json({ error: err.message });
+      console.log(err.message);
+    });
+});
+
 module.exports = router;
