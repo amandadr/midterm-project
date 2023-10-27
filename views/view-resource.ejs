@@ -20,6 +20,7 @@
         </section>
   
         <section class="vr-comments-bottom">
+          <% if (user) { %>
           <form id="vr-create-comment" action="/api/comments/" method="POST">
             <input type="hidden" name="resourceId" value="<%= resourceId %>">
   
@@ -29,6 +30,11 @@
             <button id="vr-c-c-btn" type="submit">Honk!</button>
             </section>
           </form>
+          <% } else if (!user) { %>
+          <section class="vr-c-c-bottom">
+            <h2>You must be logged in to comment!</h2>
+          </section>
+          <% } %>
   
           <section class="vr-comments-box" id="comments-container">
             <section class="vr-comments-user">
