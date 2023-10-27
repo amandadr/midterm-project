@@ -67,8 +67,8 @@ app.use("/api/profiles", profilesApiRoutes);
 app.get("/", (req, res) => {
   const user = req.session.userId;
   const templateVars = {
-    user
-  }
+    user,
+  };
   res.render("index", templateVars);
 });
 
@@ -80,8 +80,8 @@ app.get("/post", (req, res) => {
 app.get("/userpf", (req, res) => {
   const user = req.session.userId;
   const templateVars = {
-    user
-  }
+    user,
+  };
   res.render("profile-page", templateVars);
 });
 
@@ -89,8 +89,8 @@ app.get("/userpf", (req, res) => {
 app.get("/editpf", (req, res) => {
   const user = req.session.userId;
   const templateVars = {
-    user
-  }
+    user,
+  };
   res.render("edit-profile", templateVars);
 });
 
@@ -98,8 +98,8 @@ app.get("/editpf", (req, res) => {
 app.get("/viewres", (req, res) => {
   const user = req.session.userId;
   const templateVars = {
-    user
-  }
+    user,
+  };
   res.render("view-resource", templateVars);
 });
 
@@ -107,8 +107,8 @@ app.get("/viewres", (req, res) => {
 app.get("/results", (req, res) => {
   const user = req.session.userId;
   const templateVars = {
-    user
-  }
+    user,
+  };
   res.render("search-results", templateVars);
 });
 

@@ -156,3 +156,11 @@ const submitRating = function (id, data) {
     data,
   });
 };
+
+$(() => {
+  $("#search-form").on("submit", function (event) {
+    event.preventDefault();
+    const search = $("#search-text").val();
+    window.location.href = `/resources/search/${search}`;
+  });
+});
