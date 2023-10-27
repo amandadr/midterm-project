@@ -1,5 +1,3 @@
-const { createCommentElement, renderComments } = require('./helpers/comments');
-
 const createResourceElement = function (resourcesObject) {
   return Promise.all([
     getResourcePoster(resourcesObject.user_id),
@@ -9,7 +7,6 @@ const createResourceElement = function (resourcesObject) {
   ])
     .then(([name, rating, likes, profile]) => {
       let $resource = $(`
-      <section class="vr-main">
       <div class="resources">
         <section class="vr-left">
         <a href="/resources/${resourcesObject.id}"><img class="resource-img" src="${resourcesObject.img_url}"></img></a>
@@ -53,7 +50,8 @@ const createResourceElement = function (resourcesObject) {
           </section>
         </section>
       </div>
-    </section>
+
+      <section class="vr-comments-box" id="comments-container">
       `);
 
       return $resource;
@@ -65,7 +63,7 @@ const createResourceElement = function (resourcesObject) {
 };
 
 const renderResources = function (resourcesArray) {
-  const $resourcesContainer = $(".vr-main");
+  const $resourcesContainer = $("#resources-container");
   $resourcesContainer.empty();
 
   const resourcePromises = resourcesArray.map((resource) =>
@@ -106,28 +104,4 @@ $(() => {
   };
 
   loadResources();
-
-  $("#comment-form").on("submit", function (event) {
-    event.preventDefault();
-    const formData = $(this).serialize();
-    submitComment(formData)
-      .then(() => {
-        console.log("success");
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  });
-
-  const loadComments = function () {
-    $.get(`/api/comments/${window.resourceId}`)
-      .done((comments) => {
-        renderComments(comments.comments);
-      })
-      .fail((error) => {
-        console.log(error);
-      });
-  };
-
-  loadComments();
 });
