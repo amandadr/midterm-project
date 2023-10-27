@@ -17,4 +17,32 @@ router.get("/:id", (req, res) => {
   res.render("view-resource", templateVars);
 });
 
+router.post("/:id/like", (req, res) => {
+  const resourceId = req.params.id;
+  const userId = req.session.userId;
+  resourceQueries
+    .likeResource(resourceId, userId)
+    .then((resource) => {
+      res.json({ resource });
+    })
+    .catch((err) => {
+      res.status(500).json({ error: err.message });
+      console.log(err.message);
+    });
+});
+
+router.post("/:id/unlike", (req, res) => {
+  const resourceId = req.params.id;
+  const userId = req.session.userId;
+  resourceQueries
+    .unlikeResource(resourceId, userId)
+    .then((resource) => {
+      res.json({ resource });
+    })
+    .catch((err) => {
+      res.status(500).json({ error: err.message });
+      console.log(err.message);
+    });
+});
+
 module.exports = router;
