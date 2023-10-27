@@ -80,7 +80,7 @@ const submitResource = function (data) {
 const submitComment = function (data) {
   return $.ajax({
     method: "POST",
-    url: "/api/resources",
+    url: "/api/comments",
     data,
   });
 };
