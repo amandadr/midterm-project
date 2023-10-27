@@ -22,13 +22,31 @@
       height: 10rem;
       width: 10rem;
       margin: .5rem;
+
+      .ep-img-btn {
+        @include button_primary;
+      }
     }
   }
 
   .ep-img-aside {
-    height: 9rem;
+    height: 100%;
     @include flex-column($align: flex-start);
     justify-content: space-between;
+
+    .ep-name-text {
+      font-size: large;
+      @include emphasize;
+      margin-bottom: .2rem;
+    }
+
+    .ep-pronouns-text {
+    margin-bottom: .2rem;
+    }
+
+    .ep-name-btn, .ep-pronouns-btn {
+      @include button_primary;
+    }
   }
 }
 
@@ -55,6 +73,7 @@
         margin-bottom: .3rem;
         font-size: small;
         font-weight: 400;
+        @include button_primary;
       }
     }
 
@@ -82,23 +101,23 @@
       padding-bottom: .5rem;
       font-size: large;
       @include emphasize();
-
-      .ep-bio-btn {
-        font-weight: 300;
-      }
     }
 
     .ep-password-bottom {
       height: 2rem;
       width: 65%;
       @include flex-row($justify: space-between);
+      align-items: center;
 
       .ep-edit-password {
+        height: 2rem;
         width: 75%;
+        margin-right: 1rem;
       }
 
       .ep-password-btn {
         font-size: small;
+        @include button_primary;
       }
     }
   }
