@@ -15,6 +15,23 @@ router.get("/", (req, res) => {
   res.redirect(`profiles/${id}`);
 });
 
+router.get("/edit/:id", (req, res) => {
+  if (!req.session.userId) {
+    res.redirect("/");
+  }
+  const user = req.session.userId;
+  const profile = req.params.id;
+  getProfile(user).then((data) => {
+    const profileData = data[0];
+    const templateVars = {
+      user,
+      profile,
+      profileData,
+    };
+    res.render("edit-profile", templateVars);
+  });
+});
+
 router.get("/:id", (req, res) => {
   if (!req.session.userId) {
     res.redirect("/");
@@ -25,7 +42,6 @@ router.get("/:id", (req, res) => {
     const profileData = data[0];
     getUserWithId(user).then((data) => {
       const userData = data;
-      console.log(userData);
       const templateVars = {
         user,
         profile,
