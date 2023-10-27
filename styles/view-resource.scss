@@ -134,37 +134,38 @@
         }
       }
 
-      .vr-comments-box {
-        width: 80%;
-        padding: .3rem;
-        border: $border;
+      .vr-comments-posted {
+        width: 90%;
+        padding-inline-start: 3rem;
 
-        .vr-comments-user {
-          width: 20%;
-          margin-bottom: 1.5rem;
-          @include flex-row($justify: space-around);
-          align-items: center;
-
-          .comments-user-pfp {
-            height: 4rem;
-            width: 4rem;
-            margin-right: 1rem;
-          }
+        .vr-comments-box {
+          width: 100%;
+          padding: .3rem;
+          border-bottom: $color_border solid .1rem;;
 
           .comments-user-name {
+            width: 20%;
+            margin: 1.5rem;
+            margin-top: 1rem;
+            font-size: large;
             @include emphasize();
+          }
+
+          .vr-comments-body {
+            width: 90%;
+            margin-left: 2rem;
+            margin-bottom: 1.5rem;
+            @include flex-column($align: flex-start);
+          }
+
+          .vr-comments-date {
+            @include flex-column($align: flex-end);
           }
         }
 
-        .vr-comments-body {
-          width: 90%;
-          margin-left: 2rem;
-          margin-bottom: 1.5rem;
-          @include flex-column($align: flex-start);
-        }
-
-        .vr-comments-date {
-          @include flex-column($align: flex-end);
+        .mui-container {
+          border: $color_border solid .1rem;
+          border-radius: 1rem;
         }
       }
     }

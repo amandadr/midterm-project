@@ -2,16 +2,15 @@ const createCommentElement = function (commentsObject) {
   return Promise.all([getCommentsPoster(commentsObject.user_id)])
     .then(([name]) => {
       let $comment = $(`
-            <section class="vr-comments-user">
-              <div class="comments-user-name" id="user-name">${name}</div>
-            </section>
-
-            <div class="vr-comment-body">${commentsObject.body}</div>
-
-            <div class="vr-comments-date">${commentsObject.created_at}</div>
+        <section class="vr-comments-box" id="comments-container">
+          <section class="vr-comments-user">
+            <div class="comments-user-name" id="user-name">${name}</div>
           </section>
+
+          <div class="vr-comments-body">${commentsObject.body}</div>
+
+          <div class="vr-comments-date">${commentsObject.created_at}</div>
         </section>
-      </section>
       `);
 
       return $comment;

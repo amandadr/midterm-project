@@ -11,44 +11,48 @@
 
 <body>
   <%- include('./partials/header'); %>
-  <section class="vr-main">
+    <section class="vr-main">
       <%- include('./partials/_resourceById'); %>
 
-      <section class="vr-comments">
-        <section class="vr-comments-top">
-          <div class="vr-comments-header">Comments:</div>
-        </section>
-  
-        <section class="vr-comments-bottom">
-          <% if (user) { %>
-          <form id="vr-create-comment" action="/api/comments/" method="POST">
-            <input type="hidden" name="resourceId" value="<%= resourceId %>">
-  
-            <section class="vr-c-c-bottom">
-            <textarea class="vr-c-c-body" placeholder="What do you have to quack about?" rows="5" maxlength="240" name="body"></textarea>
-  
-            <button id="vr-c-c-btn" type="submit">Honk!</button>
-            </section>
-          </form>
-          <% } else if (!user) { %>
-          <section class="vr-c-c-bottom">
-            <h2>You must be logged in to comment!</h2>
+        <section class="vr-comments">
+          <section class="vr-comments-top">
+            <div class="vr-comments-header">Comments:</div>
           </section>
-          <% } %>
-  
-          <section class="vr-comments-box" id="comments-container">
-            <section class="vr-comments-user">
-              <div class="comments-user-name" id="user-name">@thisDuck</div>
-            </section>
 
-            <div class="vr-comments-body">Quack quack quack</div>
+          <section class="vr-comments-bottom">
+            <% if (user) { %>
+              <form id="vr-create-comment" action="/api/comments/" method="POST">
+                <input type="hidden" name="resourceId" value="<%= resourceId %>">
 
-            <div class="vr-comments-date">2023-10-26</div>
+                <section class="vr-c-c-bottom">
+                  <textarea class="vr-c-c-body" placeholder="What do you have to quack about?" rows="5" maxlength="240"
+                    name="body"></textarea>
+
+                  <button id="vr-c-c-btn" type="submit">Honk!</button>
+                </section>
+              </form>
+              
+              <% } else if (!user) { %>
+                <section class="vr-c-c-bottom">
+                  <h2>You must be logged in to comment!</h2>
+                </section>
+                <% } %>
+
+                  <section class="vr-comments-posted">
+                    <section class="mui-container vr-comments-box" id="comments-container">
+                      <section class="vr-comments-user">
+                        <div class="comments-user-name" id="user-name">@thisDuck</div>
+                      </section>
+
+                      <div class="vr-comments-body">Quack quack quack</div>
+
+                      <div class="vr-comments-date">2023-10-26</div>
+                    </section>
+                  </section>
           </section>
         </section>
-      </section>
     </section>
-  </section>
+    </section>
 
     <script>
       window.resourceId = "<%= resourceId %>";
