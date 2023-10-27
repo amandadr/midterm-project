@@ -7,7 +7,6 @@ const createResourceElement = function (resourcesObject) {
   ])
     .then(([name, rating, likes, profile]) => {
       let $resource = $(`
-      <div class="resources">
         <section class="vr-left">
         <a href="/resources/${resourcesObject.id}"><img class="resource-img" src="${resourcesObject.img_url}"></img></a>
           <section class="r-i-footer">
@@ -49,29 +48,6 @@ const createResourceElement = function (resourcesObject) {
           <div class="resource-user-name">${name}</div>
           </section>
         </section>
-      </div>
-
-      <section class="vr-comments">
-      <section class="vr-comments-top">
-        <div class="vr-comments-header">Comments:</div>
-      </section>
-
-      <section class="vr-comments-bottom">
-        <form id="vr-create-comment">
-          <section class="vr-c-c-user">
-            <img class="vr-c-c-user-pfp"
-            src="https://t3.ftcdn.net/jpg/01/06/13/54/360_F_106135410_hai531zdSrXxSDDuXvtbLtpslpDgb1d9.jpg">
-          <div class="vr-c-c-user-name">@duqname</div>
-          </section>
-
-          <section class="vr-c-c-bottom">
-          <textarea class="vr-c-c-body" placeholder="What do you have to quack about?" rows="5" maxlength="240"></textarea>
-
-          <button id="vr-c-c-btn" type="submit">Honk!</button>
-          </section>
-        </form>
-
-        <section class="vr-comments-box" id="comments-container">
       `);
 
       return $resource;
@@ -83,7 +59,7 @@ const createResourceElement = function (resourcesObject) {
 };
 
 const renderResources = function (resourcesArray) {
-  const $resourcesContainer = $(".vr-main");
+  const $resourcesContainer = $("#resource-container");
   $resourcesContainer.empty();
 
   const resourcePromises = resourcesArray.map((resource) =>
