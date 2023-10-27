@@ -11,6 +11,9 @@
 
 <body>
   <%- include('./partials/header'); %>
+  <script>
+    window.profileId = "<%= profile %>";
+  </script>
     <section class="pp-main">
       <section class="pp-left">
         <section class="pp-user-info">
@@ -96,7 +99,7 @@
 
     <script src="/vendor/jquery-3.0.0.js"></script>
     <script src="/scripts/app.js"></script>
-    <script src="/scripts/resources.js"></script>
+    <script src="/scripts/profile.js"></script>
 </body>
 
 </html>

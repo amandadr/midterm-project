@@ -117,6 +117,22 @@ const getProfile = function (id) {
     });
 };
 
+const getResourcesByUser = function (id) {
+  let url = `/api/users/${id}/resources`;
+  return $.ajax({
+    url,
+    dataType: "json",
+  })
+    .then((data) => {
+      const resources = data.resources;
+      return resources;
+    })
+    .catch((error) => {
+      console.error(error);
+      throw error;
+    });
+};
+
 $(() => {
   $("#login-form").submit(function (event) {
     event.preventDefault();
