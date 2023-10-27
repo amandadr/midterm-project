@@ -5,19 +5,28 @@
   width: 80%;
   margin: 1rem;
   @include flex-row($justify: space-between);
-  font-size: larger;
+  font-size: x-large;
   @include emphasize();
 }
 
-.row {
-  display: block;
-  .col-lg-4 {
-    @include flex-row($justify: space-between);
+.box {
+  width: 90%;
+
+  .resources-container {
+    width: 100%;
+    padding: .2rem;
+    display: inline-grid;
+    grid-template-columns: repeat(5, auto);
+    grid-gap: .5rem;
+  }
+
+  .mui-container {
+    border: $color_border solid .1rem;
+    border-radius: 1rem;
+  }
+
+  .resources:hover {
+    box-shadow: 0.4rem .25rem $background_blue;
   }
 }
 
-.resource {
-  width: 15rem;
-  margin: 1rem;
-  padding: .2rem;
-}
