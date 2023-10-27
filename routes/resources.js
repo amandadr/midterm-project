@@ -31,8 +31,10 @@ router.get("/search/:q", (req, res) => {
         user,
         userProfile,
         resources,
+        search,
       };
       console.log(resources);
+      console.log(search);
       res.render("search-results", templateVars);
     })
     .catch((err) => {

@@ -14,9 +14,13 @@
     <div class="sr-head">Your Results:</div>
     <div class="box"><%- include('./partials/resource'); %></div>
 
+
+    <script>
+      window.searchInput = "<%= search %>";
+    </script>
     <script src="/vendor/jquery-3.0.0.js"></script>
     <script src="/scripts/app.js"></script>
-    <script src="/scripts/resources.js"></script>
+    <script src="/scripts/searchResources.js"></script>
 </body>
 
 </html>
