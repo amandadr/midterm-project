@@ -13,7 +13,7 @@ $background_primary: #7ba6ff;
 $background_blue: #4056a1;
 $background_yellow: #ffd581;
 
-$border: .2rem solid $color_border;
+$border: $color_border solid .1rem;
 
 
 // @include
@@ -54,4 +54,9 @@ $border: .2rem solid $color_border;
   justify-content: center;
   background-color: $color_primary;
   font-size: small;
+}
+
+@mixin border_primary () {
+  border: $border;
+  border-radius: 1rem;
 }

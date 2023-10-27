@@ -90,6 +90,7 @@
 
       #vr-create-comment {
         width: 80%;
+        margin-left: 1.75rem;
         padding: .3rem;
         @include flex-column($align: flex-start);
         border: $border;
@@ -139,9 +140,10 @@
         padding-inline-start: 3rem;
 
         .vr-comments-box {
+          height: 100%;
           width: 100%;
           padding: .3rem;
-          border-bottom: $color_border solid .1rem;;
+          border-bottom: $border;
 
           .comments-user-name {
             width: 20%;
@@ -153,9 +155,8 @@
 
           .vr-comments-body {
             width: 90%;
-            margin-left: 2rem;
             margin-bottom: 1.5rem;
-            @include flex-column($align: flex-start);
+            @include flex-column($align: center);
           }
 
           .vr-comments-date {
@@ -164,8 +165,7 @@
         }
 
         .mui-container {
-          border: $color_border solid .1rem;
-          border-radius: 1rem;
+          @include border_primary;
         }
       }
     }
