@@ -18,11 +18,11 @@
       <section class="pp-left">
         <section class="pp-user-info">
           <img class="pp-user-pfp"
-            src="https://t3.ftcdn.net/jpg/01/06/13/54/360_F_106135410_hai531zdSrXxSDDuXvtbLtpslpDgb1d9.jpg">
+            src="<%= profileData.pfp_url %>">
           <section class="pp-user-info-text">
-            <div class="pp-user-display">Devvy Duq</div>
-            <div class="pp-user-pronouns">quack/honk</div>
-            <div class="pp-user-name">@duqname</div>
+            <div class="pp-user-display"> <%= profileData.display_name %> </div>
+            <div class="pp-user-pronouns"> <%=  profileData.pronouns %></div>
+            <div class="pp-user-name"><%= userData.name %></div>
             <form id="edit-pf" action="/users/:id/edit" method="post">
               <button class="mui-btn mui-btn--small mui-btn--primary" id="edit-pf-btn" type="submit">Edit Profile</button>
             </form>
@@ -35,9 +35,7 @@
           </div>
 
           <p class="pp-bio-text">
-            Ducks are a group of species of water birds – relatively small in size and with shorter necks than their
-            close cousins of swans and geese. Along with their longer necked cousins, they make up the biological family
-            of Anatidae.
+            <%= profileData.bio %>
           </p>
         </section>
 
