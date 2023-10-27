@@ -27,10 +27,10 @@ const getResourceRating = (resourceId) => {
     .then((data) => data.rows[0].round);
 };
 
-const addResource = (title, description, url, user_id, img_url) => {
+const addResource = (title, description, url, user_id, img_url, category) => {
   const query = {
-    text: "INSERT INTO resources(title, description, url, user_id, img_url) VALUES($1, $2, $3, $4, $5) RETURNING *",
-    values: [title, description, url, user_id, img_url],
+    text: "INSERT INTO resources(title, description, url, user_id, img_url, category) VALUES($1, $2, $3, $4, $5, $6) RETURNING *",
+    values: [title, description, url, user_id, img_url, category],
   };
   return db.query(query).then((res) => res.rows[0]);
 };

@@ -138,6 +138,7 @@ $(() => {
     submitRating(window.resourceId, formData)
       .then(() => {
         console.log("success");
+        location.reload();
       })
       .catch((error) => {
         console.error(error);
