@@ -1,0 +1,16 @@
+INSERT INTO likes (user_id, resource_id, liked) VALUES (1, 1, TRUE);
+INSERT INTO likes (user_id, resource_id, liked) VALUES (2, 1, FALSE);
+INSERT INTO likes (user_id, resource_id, liked) VALUES (1, 2, FALSE);
+INSERT INTO likes (user_id, resource_id, liked) VALUES (1, 3, FALSE);
+INSERT INTO likes (user_id, resource_id, liked) VALUES (2, 3, TRUE);
+INSERT INTO likes (user_id, resource_id, liked) VALUES (2, 4, TRUE);
+INSERT INTO likes (user_id, resource_id, liked) VALUES (1, 5, FALSE);
+INSERT INTO likes (user_id, resource_id, liked) VALUES (2, 5, TRUE);
+INSERT INTO likes (user_id, resource_id, liked) VALUES (1, 6, FALSE);
+INSERT INTO likes (user_id, resource_id, liked) VALUES (2, 6, TRUE);
+INSERT INTO likes (user_id, resource_id, liked) VALUES (2, 7, TRUE);
+INSERT INTO likes (user_id, resource_id, liked) VALUES (1, 8, FALSE);
+INSERT INTO likes (user_id, resource_id, liked) VALUES (2, 8, TRUE);
+INSERT INTO likes (user_id, resource_id, liked) VALUES (2, 9, TRUE);
+INSERT INTO likes (user_id, resource_id, liked) VALUES (1, 10, FALSE);
+INSERT INTO likes (user_id, resource_id, liked) VALUES (2, 10, TRUE);
