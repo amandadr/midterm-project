@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <title>Home Page</title>
+  <title>Profile Page</title>
   <%- include('./partials/head'); %>
     <!-- House Sheets -->
     <link rel="stylesheet" href="/styles/resource.css" />
@@ -11,6 +11,9 @@
 
 <body>
   <%- include('./partials/header'); %>
+  <script>
+    window.profileId = "<%= profile %>";
+  </script>
     <section class="pp-main">
       <section class="pp-left">
         <section class="pp-user-info">
@@ -20,6 +23,9 @@
             <div class="pp-user-display">Devvy Duq</div>
             <div class="pp-user-pronouns">quack/honk</div>
             <div class="pp-user-name">@duqname</div>
+            <form id="edit-pf" action="/users/:id/edit" method="post">
+              <button class="mui-btn mui-btn--small mui-btn--primary" id="edit-pf-btn" type="submit">Edit Profile</button>
+            </form>
           </section>
         </section>
 
@@ -68,7 +74,7 @@
 
           <section class="cq-bottom">
             <textarea class="cq-description" placeholder="Description" id="description" name="description" rows="4" maxlength="150" required></textarea>
-            <button class="cq-btn" id="post-resource" type="submit">Quack!</button>
+            <button class="mui-btn mui-btn--small mui-btn--primary cq-btn" id="post-resource" type="submit">Quack!</button>
           </section>
         </form>
       </section>

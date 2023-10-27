@@ -2,7 +2,7 @@
 nav {
   height: 15vh;
   width: 100%;
-  @include background_ducks;
+  @include background_nav;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -16,16 +16,30 @@ nav {
       width: 20vw;
       margin-inline-start: 1rem;
       @include flex-row($justify: space-between);
-      #logo {
-        height: 3rem;
-        width: 3rem;
+
+      .logo-container {
+        @include flex-column($align: center);
+
+        #logo {
+          height: 4rem;
+          width: 4rem;
+        }
+
+        #DDQ {
+          font-weight: 600;
+          color: $color_tertiary;
+        }
       }
       .searchbar {
         @include flex-column($align: center);
+        justify-content: center;
         #search-text {
           height: 1.75rem;
           width: fit-content;
           align-items: center;
+        }
+        #search-btn {
+          @include button_primary;
         }
       }
     }
@@ -39,7 +53,17 @@ nav {
       .login,
       .register {
         height: 1.5rem;
+        margin: .1rem;
         @include flex-row($justify: space-evenly);
+        align-items: center;
+
+        #login-user, #login-password, #register-user, #register-email, #register-password {
+          margin: .1rem;
+        }
+
+        #login-btn, #register-btn, #logout-btn {
+          @include button_primary;
+        }
       }
 
     }
@@ -49,16 +73,22 @@ nav {
       @include flex-row($justify: space-between);
       align-items: center;
 
-      #user-pfp {
-        height: 3rem;
-        width: 3rem;
-        margin: .2rem;
-      }
+      .user-container {
+        @include flex-row($justify: space-between);
+      align-items: center;
 
-      #user-name {
-        margin: .2rem;
-        background-color: rgba(199, 227, 251, 0.859);
-        font-size: medium;
+        #user-pfp {
+          height: 3rem;
+          width: 3rem;
+          margin: .2rem;
+        }
+
+        #user-name {
+          margin: .2rem;
+          background-color: rgba(199, 227, 251, 0.859);
+          font-size: medium;
+          text-decoration: none;
+        }
       }
     }
   }
