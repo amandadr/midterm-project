@@ -22,9 +22,10 @@
         window.userId = "<%= user %>"
       </script>
       <div class="nav-right-logged">
-        <img id="user-pfp"
-          src="https://t3.ftcdn.net/jpg/01/06/13/54/360_F_106135410_hai531zdSrXxSDDuXvtbLtpslpDgb1d9.jpg"></img>
-        <div id="user-name">@</div>
+        <a href="/profiles/<%= user %>">
+          <img id="user-pfp"></img>
+          <div id="user-name"></div>
+        </a>
         <form id="logout" action="/logout" method="POST">
           <button id="logout-btn" type="submit">Logout</button>
         </form>
