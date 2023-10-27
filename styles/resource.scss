@@ -1,9 +1,10 @@
 @import './partial';
 
 .resources {
-  width: 100%;
+  width: 12rem;
   margin-left: 1rem;
   @include flex-column($align: center);
+  @include background_resource;
 
   .resource-img {
     margin-top: .5rem;
@@ -50,4 +51,8 @@
       font-size: small;
     }
   }
+}
+
+.resources:hover {
+  box-shadow: 0.4rem .25rem $background_blue;
 }

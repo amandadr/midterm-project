@@ -9,7 +9,7 @@ $color_error: #b22222;
 $color_border: #001b53;
 $color_dim: #665829;
 
-$background_primary: #c9dbff;
+$background_primary: #7ba6ff;
 $background_blue: #4056a1;
 $background_yellow: #ffd581;
 
@@ -40,8 +40,13 @@ $border: .2rem solid $color_border;
 }
 
 @mixin background_main() {
-  background-color: $background_primary;
-  background-image: url("https://www.transparenttextures.com/patterns/wavecut.png");
+  background-color: $background_blue;
+  background-image: url("https://www.transparenttextures.com/patterns/subtle-white-feathers.png");
+}
+
+@mixin background_resource {
+  background-color: #ffedc9;
+  background-image: url("https://www.transparenttextures.com/patterns/nice-snow.png");
 }
 
 @mixin button_primary() {

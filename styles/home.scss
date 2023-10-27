@@ -9,5 +9,7 @@
 }
 
 .mui-container {
-  outline: $color_secondary solid .2rem;
+  
+  border: $color_border solid .1rem;
+  border-radius: 1rem;
 }
