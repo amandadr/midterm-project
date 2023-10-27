@@ -16,8 +16,10 @@ const createResourceElement = function (resourcesObject) {
             </div>
 
             <section class="resource-user-info">
+            <a href="/profiles/${resourcesObject.user_id}">
               <img class="resource-user-pfp" src="${profile[0].pfp_url}"></img>
               <div class="resource-user-name">${name}</div>
+            </a>
             </section>
 
             <p class="resource-description">${resourcesObject.description}</p>
