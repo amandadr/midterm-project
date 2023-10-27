@@ -80,6 +80,39 @@ const addComment = (comment, resourceId, userId) => {
   return db.query(query).then((res) => res.rows[0]);
 };
 
+const likeResource = (resourceId, userId) => {
+  const query = {
+    text: "INSERT INTO likes(resource_id, user_id) VALUES($1, $2, $3) RETURNING *",
+    values: [resourceId, userId, true],
+  };
+  return db.query(query).then((res) => res.rows[0]);
+};
+
+const unlikeResource = (resourceId, userId) => {
+  const query = {
+    text: "DELETE FROM likes WHERE resource_id = $1 AND user_id = $2",
+    values: [resourceId, userId],
+  };
+  return db.query(query);
+};
+
+const rateResource = (resourceId, userId, rating) => {
+  const query = {
+    text: "INSERT INTO ratings(resource_id, user_id, rating) VALUES($1, $2, $3) RETURNING *",
+    values: [resourceId, userId, rating],
+  };
+  return db.query(query).then((res) => res.rows[0]);
+};
+
+const resourceRatedByUser = (resourceId, userId) => {
+  return db
+    .query(`SELECT * FROM ratings WHERE resource_id = $1 AND user_id = $2;`, [
+      resourceId,
+      userId,
+    ])
+    .then((data) => data.rows[0]);
+};
+
 module.exports = {
   getResources,
   getResourcePoster,
@@ -93,4 +126,8 @@ module.exports = {
   getResourceComments,
   getCommentsPoster,
   addComment,
+  likeResource,
+  unlikeResource,
+  rateResource,
+  resourceRatedByUser,
 };
