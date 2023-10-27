@@ -56,6 +56,7 @@ $(() => {
     submitResource(formData)
       .then(() => {
         console.log("success");
+        location.reload();
       })
       .catch((error) => {
         console.error(error);
@@ -71,6 +72,25 @@ $(() => {
         console.log(error);
       });
   };
+
+  const loadResourcesByCategory = function (category) {
+    $.get(`/profiles/${window.userId}/${category}`)
+      .done((resources) => {
+        renderResources(resources.resources);
+      })
+      .fail((error) => {
+        console.log(error);
+      });
+  };
+
+  $("#category-selector").on("change", function () {
+    const selectedCategory = $(this).val();
+    if (selectedCategory === "all") {
+      loadResources();
+    } else {
+      loadResourcesByCategory(selectedCategory);
+    }
+  });
 
   loadResources();
 });

@@ -82,7 +82,7 @@
           <div class="pp-right-head">Your Quacks:</div>
 
           <section class="pp-category">
-            <select name="pp-category">
+            <select name="pp-category" id="category-selector">
               <option value="all">All</option>
               <option value="liked">Liked</option>
               <option value="favourites">Favourites</option>
@@ -92,7 +92,7 @@
               <option value="scripts">Scripts</option>
               <option value="styles">Styles</option>
               <option value="read-later">Read Later</option>
-              <option value="etc">Etc.</option>
+              <option value="misc">Misc.</option>
             </select>
           </section>
         </section>
@@ -105,6 +105,7 @@
 
     <script>
       window.profileId = "<%= profile %>";
+      window.userId = "<%= user %>";
     </script>
     <%- include('./partials/_scripts'); %>
     <script src="/scripts/profiles.js"></script>

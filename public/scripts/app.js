@@ -69,6 +69,38 @@ function getResourceLikes(id) {
     });
 }
 
+function getResourcesByLikedUser(id) {
+  let url = `/profiles/${id}/liked`;
+  return $.ajax({
+    url,
+    dataType: "json",
+  })
+    .then((data) => {
+      const resources = data.resources;
+      return resources;
+    })
+    .catch((error) => {
+      console.error(error);
+      throw error;
+    });
+}
+
+function getResourcesByCategory(category, id) {
+  let url = `/profiles/${id}/${category}`;
+  return $.ajax({
+    url,
+    dataType: "json",
+  })
+    .then((data) => {
+      const resources = data.resources;
+      return resources;
+    })
+    .catch((error) => {
+      console.error(error);
+      throw error;
+    });
+}
+
 const submitResource = function (data) {
   return $.ajax({
     method: "POST",

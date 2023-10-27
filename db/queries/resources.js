@@ -131,6 +131,22 @@ const getResourcesBySearch = (search) => {
     .then((data) => data.rows);
 };
 
+const getResourcesByCategory = (category, userId) => {
+  const query = {
+    text: "SELECT * FROM resources WHERE category = $1 AND user_id = $2",
+    values: [category, userId],
+  };
+  return db.query(query).then((res) => res.rows);
+};
+
+const getResourcesByLikedUser = (userId) => {
+  const query = {
+    text: `SELECT * FROM resources WHERE id IN (SELECT resource_id FROM likes WHERE user_id = $1)`,
+    values: [userId],
+  };
+  return db.query(query).then((res) => res.rows);
+};
+
 module.exports = {
   getResources,
   getResourcePoster,
@@ -150,4 +166,6 @@ module.exports = {
   resourceRatedByUser,
   getResourceLikedByUser,
   getResourcesBySearch,
+  getResourcesByCategory,
+  getResourcesByLikedUser,
 };

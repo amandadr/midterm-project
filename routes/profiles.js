@@ -1,6 +1,10 @@
 const express = require("express");
 const { getProfile } = require("../db/queries/profiles");
 const { getUserWithId } = require("../db/queries/users");
+const {
+  getResourcesByLikedUser,
+  getResourcesByCategory,
+} = require("../db/queries/resources");
 const router = express.Router();
 
 router.get("/", (req, res) => {
@@ -31,6 +35,37 @@ router.get("/:id", (req, res) => {
       res.render("profile-page", templateVars);
     });
   });
+});
+
+router.get("/:id/liked", (req, res) => {
+  if (!req.session.userId) {
+    res.redirect("/");
+  }
+  const user = req.session.userId;
+  getResourcesByLikedUser(user)
+    .then((resources) => {
+      res.json({ resources });
+    })
+    .catch((err) => {
+      res.status(500).json({ error: err.message });
+      console.log(err.message);
+    });
+});
+
+router.get("/:id/:category", (req, res) => {
+  if (!req.session.userId) {
+    res.redirect("/");
+  }
+  const category = req.params.category;
+  const user = req.session.userId;
+  getResourcesByCategory(category, user)
+    .then((resources) => {
+      res.json({ resources });
+    })
+    .catch((err) => {
+      res.status(500).json({ error: err.message });
+      console.log(err.message);
+    });
 });
 
 module.exports = router;
