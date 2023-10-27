@@ -22,8 +22,8 @@ router.post("/:id/like", (req, res) => {
   const userId = req.session.userId;
   resourceQueries
     .likeResource(resourceId, userId)
-    .then((resource) => {
-      res.json({ resource });
+    .then(() => {
+      res.redirect(`/resources/${resourceId}`);
     })
     .catch((err) => {
       res.status(500).json({ error: err.message });
@@ -36,13 +36,37 @@ router.post("/:id/unlike", (req, res) => {
   const userId = req.session.userId;
   resourceQueries
     .unlikeResource(resourceId, userId)
-    .then((resource) => {
-      res.json({ resource });
+    .then(() => {
+      res.redirect(`/resources/${resourceId}`);
     })
     .catch((err) => {
       res.status(500).json({ error: err.message });
       console.log(err.message);
     });
+});
+
+router.post("/:id/rate", (req, res) => {
+  const resourceId = req.params.id;
+  const userId = req.session.userId;
+  const { rating } = req.body;
+
+  resourceQueries.resourceRatedByUser(resourceId, userId).then((result) => {
+    if (result) {
+      return res
+        .status(400)
+        .json({ error: "User already rated this resource" });
+    } else {
+      resourceQueries
+        .rateResource(resourceId, userId, rating)
+        .then((resource) => {
+          res.json({ resource });
+        })
+        .catch((err) => {
+          res.status(500).json({ error: err.message });
+          console.log(err.message);
+        });
+    }
+  });
 });
 
 module.exports = router;

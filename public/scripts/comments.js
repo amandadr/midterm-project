@@ -45,6 +45,7 @@ $(() => {
     submitComment(formData)
       .then(() => {
         console.log("success");
+        location.reload();
       })
       .catch((error) => {
         console.error(error);

@@ -78,7 +78,6 @@ const submitResource = function (data) {
 };
 
 const submitComment = function (data) {
-  console.log(data);
   return $.ajax({
     method: "POST",
     url: "/api/comments",
@@ -116,4 +115,28 @@ const getProfile = function (id) {
       console.error(error);
       throw error;
     });
+};
+
+const submitLike = function (id, data) {
+  return $.ajax({
+    method: "POST",
+    url: `/resources/${id}/like`,
+    data,
+  });
+};
+
+const submitUnlike = function (id, data) {
+  return $.ajax({
+    method: "POST",
+    url: `/resources/${id}/unlike`,
+    data,
+  });
+};
+
+const submitRating = function (id, data) {
+  return $.ajax({
+    method: "POST",
+    url: `/resources/${id}/rate`,
+    data,
+  });
 };

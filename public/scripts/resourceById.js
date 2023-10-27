@@ -12,7 +12,7 @@ const createResourceElement = function (resourcesObject) {
           <section class="r-i-footer">
             <section class="r-i-f-rate">
               <div class="resource-rating">Rating: ${rating}⭐</div>
-              <form class="rate" action="/rate" method="POST">
+              <form class="rate" action="/resources/${resourcesObject.id}/rate" method="POST" id="rate-resource">
                 <select id="rate-menu" >
                 <option value="1">1⭐</option>
                 <option value="2">2⭐</option>
@@ -25,7 +25,7 @@ const createResourceElement = function (resourcesObject) {
             </section>
             <section class="r-i-f-like">
               <div class="likes">Likes: ${likes}</div>
-              <form class="like" action="/like" method="POST">
+              <form class="like" action="/resources/${resourcesObject.id}/like" method="POST" id="like-resource">
                 <button id="like-btn" type="submit">Like</button>
               </form>
             </section>
@@ -84,6 +84,44 @@ $(() => {
     submitResource(formData)
       .then(() => {
         console.log("success");
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  });
+
+  $(document).on("submit", "#like-resource", function (event) {
+    event.preventDefault();
+    const formData = $(this).serialize();
+    submitLike(window.resourceId, window.userId, formData)
+      .then(() => {
+        console.log("success");
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  });
+
+  $(document).on("submit", "#unlike-resource", function (event) {
+    event.preventDefault();
+    const formData = $(this).serialize();
+    submitUnlike(window.resourceId, formData)
+      .then(() => {
+        console.log("success");
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  });
+
+  $(document).on("submit", "#rate-resource", function (event) {
+    event.preventDefault();
+    const selectedRating = $("#rate-menu").val();
+    const formData = $(this).serialize() + `&rating=${selectedRating}`;
+    submitRating(window.resourceId, formData)
+      .then(() => {
+        console.log("success");
+        location.reload();
       })
       .catch((error) => {
         console.error(error);
