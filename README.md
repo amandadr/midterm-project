@@ -21,14 +21,14 @@ Your duck shouldn't have to remember everything for you, after all.
 8. Visit `http://localhost:8080/`
 
 ## Screenshots + Features
-Home Page
-https://github.com/amandadr/midterm-project/blob/master/docs/home-login.gif?raw=true
+![Home Page]
+(https://github.com/amandadr/midterm-project/blob/master/docs/home-login.gif?raw=true)
 
-Profile Page
-https://github.com/amandadr/midterm-project/blob/master/docs/view-edit-profile.gif?raw=true
+![Profile Page]
+(https://github.com/amandadr/midterm-project/blob/master/docs/view-edit-profile.gif?raw=true)
 
-Resource Page
-https://github.com/amandadr/midterm-project/blob/master/docs/post-comment.gif?raw=true
+![Resource Page]
+(https://github.com/amandadr/midterm-project/blob/master/docs/post-comment.gif?raw=true)
 
 ## Dependencies
 
